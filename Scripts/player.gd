@@ -6,6 +6,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var idle_variant : int
 	idle_variant = randi_range(0,400)
+	if global_position == get_parent().global_position and !Globals.end_of_day and !animation == "idle_variant":
+		idle()
 	if idle_variant == 0 and self.animation == "idle" and self.frame == 0 and !Globals.end_of_day:
 		self.play("idle_variant", 1.0)
 	if self.animation == "idle_variant" and self.frame == 5 and !Globals.end_of_day:
@@ -15,6 +17,7 @@ func _process(_delta: float) -> void:
 			self.play("sleep", 0.5)
 		else:
 			self.play("sleep_inverse", 0.5)
+	
 
 func run() -> void:
 	self.play("run", 1.0)

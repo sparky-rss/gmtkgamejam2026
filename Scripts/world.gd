@@ -17,6 +17,8 @@ func pass_time():
 	$HUD_Layer/HUD/Moves.update_moves()
 	if Globals.remaining_moves == 0:
 		Globals.end_of_day = true
+		await get_tree().create_timer(0.5).timeout
+		$CharacterBody2D/PlayerSprite.idle()
 		var den_pos : Vector2 = $TileMapLayer.map_to_local(Globals.den_position)
 		den_pos -= (Globals.tile_size/2)
 		blackout_tween = create_tween()

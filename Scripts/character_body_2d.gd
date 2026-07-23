@@ -6,8 +6,6 @@ func _ready() -> void:
 	Globals.player_position = global_position
 
 func _physics_process(_delta: float) -> void:
-	if $PlayerSprite.global_position == global_position and !Globals.end_of_day and !$PlayerSprite.animation == "idle_variant":
-		$PlayerSprite.idle()
 	if (!sprite_node_pos_tween or !sprite_node_pos_tween.is_running()) and !Globals.end_of_day:
 		if Input.is_action_pressed("move_up") and !$up.is_colliding():
 			_move(Vector2(0, -1))
