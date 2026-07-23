@@ -9,7 +9,18 @@ func _ready() -> void:
 		setup_first_day()
 	Globals.mouth_inventory_changed.connect(mouth_inventory_update)
 
+func show_return():
+	get_node("Return").show()
+	get_node("Return").play("play", 2.0)
+	
+func hide_return():
+	get_node("Return").hide()
+
 func mouth_inventory_update(new_mouth_inventory : Array):
+	if Globals.mouth_size == new_mouth_inventory.size():
+		show_return()
+	else:
+		hide_return()
 	if new_mouth_inventory == []:
 		for i in Globals.mouth_size:
 			var target_container = str("HUD_Layer/HUD/Label/InventoryContainer/",i,"/AnimatedSprite2D")
@@ -30,6 +41,7 @@ func setup_first_day():
 	generate_trees()
 	#generate_rivers()
 	spread_acorns()
+	set_player_view()
 
 func setup_playable_area_array():
 	for x in 39:
@@ -83,6 +95,16 @@ func spread_acorns():
 			new_acorn.get_node(("AnimatedSprite2D")).play("normal", 1.0)
 			new_acorn.state = "normal"
 
+func set_player_view():
+	var player_cell = Globals.map_position
+	for x in range(-Globals.visible_radius, Globals.visible_radius + 1):
+		for y in range(-Globals.visible_radius, Globals.visible_radius + 1):
+			var offset = Vector2i(x, y)
+			var target_cell = player_cell + offset
+			
+			if offset.length() <= Globals.visible_radius:
+				$FogLayer.set_cell(target_cell, 15, Vector2i(0,0))
+
 func setup_new_day():
 	Globals.remaining_moves = Globals.total_moves
 	var den_pos : Vector2 = $TileMapLayer.map_to_local(Globals.den_position)
@@ -90,6 +112,7 @@ func setup_new_day():
 	$CharacterBody2D.global_position = den_pos
 
 func pass_time():
+	set_player_view()
 	Globals.remaining_moves -= 1
 	$HUD_Layer/HUD/Moves.update_moves()
 	if Globals.remaining_moves == 0:
