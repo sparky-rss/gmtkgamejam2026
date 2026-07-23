@@ -748,16 +748,17 @@ color = Color(0, 0, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD_Layer/HUD/Shop/ColorRect"]
 texture_filter = 1
-position = Vector2(109, 11)
+position = Vector2(134, 11)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_uqdn7")
 animation = &"idle"
-frame_progress = 0.07679422
+frame_progress = 0.31646097
 speed_scale = 2.0
 
 [node name="Label" type="Label" parent="HUD_Layer/HUD/Shop"]
 layout_mode = 2
 text = "Eat acorns to grow stronger!"
+horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="HUD_Layer/HUD/Shop"]
 layout_mode = 2
@@ -807,7 +808,7 @@ texture = ExtResource("7_pt3ps")
 
 [node name="Movement" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
-text = "Energy +5
+text = "Energy +4
 "
 icon_alignment = 2
 
@@ -833,7 +834,7 @@ text = "Hibernate
 icon_alignment = 2
 
 [node name="HibernateCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
-custom_minimum_size = Vector2(40, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "200"
 horizontal_alignment = 2

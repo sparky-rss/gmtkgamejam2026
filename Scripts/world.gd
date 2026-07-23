@@ -1,6 +1,7 @@
 extends Node2D
 
 var blackout_tween : Tween
+var pause : bool
 const acorn_scene = preload("res://Scenes/acorn.tscn")
 
 func _ready() -> void:
@@ -140,10 +141,26 @@ func pass_time():
 		blackout_tween.tween_property($HUD_Layer/Blackout, "color:a", 1.0, 2.0)
 		await get_tree().create_timer(2.2).timeout
 		get_node("HUD_Layer/HUD/Shop").show()
+		disable_relevant_buttons()
 		get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("idle", 1.0)
 		
 
-
+func disable_relevant_buttons():
+	var disable_mouth_upgrade = Globals.MouthCapacityLevel == Globals.MouthCapacityMaxLevel
+	if !disable_mouth_upgrade:
+		disable_mouth_upgrade = Globals.banked_acorns < Globals.MouthCapacityCostArray[Globals.MouthCapacityLevel] 
+	get_node("HUD_Layer/HUD/Shop/GridContainer/MouthCapacity").disabled = disable_mouth_upgrade
+	var disable_vision_upgrade = Globals.VisionRadiusLevel == Globals.VisionRadiusMaxLevel
+	if !disable_vision_upgrade:
+		disable_vision_upgrade = Globals.banked_acorns < Globals.VisionRadiusCostArray[Globals.VisionRadiusLevel] 
+	get_node("HUD_Layer/HUD/Shop/GridContainer/VisionRadius").disabled = disable_vision_upgrade
+	var disable_movement_upgrade = Globals.MovementLevel == Globals.MovementMaxLevel
+	if !disable_movement_upgrade:
+		disable_movement_upgrade = Globals.banked_acorns < Globals.MovementCostArray[Globals.MovementLevel]
+	get_node("HUD_Layer/HUD/Shop/GridContainer/Movement").disabled = disable_movement_upgrade
+	var disable_hibernate_upgrade = Globals.banked_acorns < Globals.HibernationCost
+	get_node("HUD_Layer/HUD/Shop/GridContainer/Hibernate").disabled = disable_hibernate_upgrade	
+	
 func _on_den_body_entered(_body: Node2D) -> void:
 	if Globals.end_of_day:
 		await get_tree().create_timer(1.3).timeout
@@ -158,9 +175,31 @@ func _on_den_body_entered(_body: Node2D) -> void:
 		$HUD_Layer/HUD/Cache.update_cache()
 		Globals.mouth_inventory = []
 
-
+func eat():
+	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("eat", 1.0)
+	
+func celebrate():
+	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("joy", 1.0)
+	
+func idle():
+	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("idle", 1.0)
+	
 func _on_mouth_capacity_pressed() -> void:
-	pass # Replace with function body.
+	if !pause:
+		pause = true
+		eat()
+		await get_tree().create_timer(1).timeout
+		celebrate()
+		await get_tree().create_timer(1).timeout
+		idle()
+		Globals.banked_acorns -= Globals.MouthCapacityCostArray[Globals.MouthCapacityLevel]
+		Globals.MouthCapacityLevel += 1
+		Globals.mouth_size += 1
+		get_node("HUD_Layer/HUD/Cache").update_cache()
+		get_node(str("HUD_Layer/HUD/Label/InventoryContainer/", Globals.MouthCapacityLevel)).show()
+		get_node("HUD_Layer/HUD/Shop/GridContainer/MouthCapacityCost").text = str(Globals.MouthCapacityCostArray[Globals.MouthCapacityLevel])
+		disable_relevant_buttons()
+		pause = false
 
 
 func _on_vision_radius_pressed() -> void:
