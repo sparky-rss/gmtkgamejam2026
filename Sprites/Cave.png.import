@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u30dmcwltp5h"
-path="res://.godot/imported/Squirrel Sprite Sheet.png-8da3828be2f23aaca12f607f5884ed8d.ctex"
+uid="uid://bqdk8o3sel07j"
+path="res://.godot/imported/Cave.png-b54a4cb29def5e78295e329c7506142a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Squirrel Sprite Sheet.png"
-dest_files=["res://.godot/imported/Squirrel Sprite Sheet.png-8da3828be2f23aaca12f607f5884ed8d.ctex"]
+source_file="res://Sprites/Cave.png"
+dest_files=["res://.godot/imported/Cave.png-b54a4cb29def5e78295e329c7506142a.ctex"]
 
 [params]
 
