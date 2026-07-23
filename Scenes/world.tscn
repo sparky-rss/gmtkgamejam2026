@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=4 uid="uid://m1m6a80qsrtw"]
+[gd_scene load_steps=104 format=4 uid="uid://m1m6a80qsrtw"]
 
 [ext_resource type="Script" uid="uid://d13omtisa0lkg" path="res://Scripts/world.gd" id="1_8j60k"]
 [ext_resource type="Texture2D" uid="uid://ffdtqelogs0w" path="res://Sprites/GRASS+.png" id="1_go701"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://dmt141kdd35a1" path="res://Scripts/cache.gd" id="5_1cojt"]
 [ext_resource type="Script" uid="uid://dkar7b7xo3dgq" path="res://Scripts/tile_map_layer.gd" id="5_k7acu"]
 [ext_resource type="Texture2D" uid="uid://70v528t4tdk8" path="res://Sprites/Broken_tree2.png" id="6_hgpy0"]
+[ext_resource type="Texture2D" uid="uid://u30dmcwltp5h" path="res://Sprites/Squirrel Sprite Sheet.png" id="6_i4fjy"]
+[ext_resource type="Texture2D" uid="uid://cfeap1dr0i28" path="res://Sprites/AcornIcon.png" id="7_pt3ps"]
 [ext_resource type="Texture2D" uid="uid://bvm01nggaov15" path="res://Sprites/Broken_tree5.png" id="7_t2t4p"]
 [ext_resource type="Texture2D" uid="uid://ddro81rc5ixa7" path="res://Sprites/Snow_christmass_tree3.png" id="8_0pcbe"]
 [ext_resource type="Texture2D" uid="uid://chfj5gjajkf25" path="res://Sprites/Cave3.png" id="9_5v1tr"]
@@ -98,6 +100,115 @@ animations = [{
 }],
 "loop": true,
 "name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkcvt"]
+atlas = ExtResource("6_i4fjy")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atqvy"]
+atlas = ExtResource("6_i4fjy")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5giw"]
+atlas = ExtResource("6_i4fjy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwdyn"]
+atlas = ExtResource("6_i4fjy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6yt7"]
+atlas = ExtResource("6_i4fjy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_al5m0"]
+atlas = ExtResource("6_i4fjy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mm6r"]
+atlas = ExtResource("6_i4fjy")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcb5n"]
+atlas = ExtResource("6_i4fjy")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te07t"]
+atlas = ExtResource("6_i4fjy")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4e6k"]
+atlas = ExtResource("6_i4fjy")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sgyr"]
+atlas = ExtResource("6_i4fjy")
+region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l33cg"]
+atlas = ExtResource("6_i4fjy")
+region = Rect2(160, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13n8b"]
+atlas = ExtResource("6_i4fjy")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uqdn7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkcvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atqvy")
+}],
+"loop": true,
+"name": &"eat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5giw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwdyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6yt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al5m0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mm6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcb5n")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te07t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4e6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sgyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l33cg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13n8b")
+}],
+"loop": true,
+"name": &"joy",
 "speed": 5.0
 }]
 
@@ -561,6 +672,7 @@ sprite_frames = SubResource("SpriteFrames_axeuq")
 animation = &"golden"
 
 [node name="1" type="ColorRect" parent="HUD_Layer/HUD/Label/InventoryContainer"]
+visible = false
 custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
@@ -620,10 +732,131 @@ offset_bottom = 38.0
 text = "Acorns Cached: 0"
 script = ExtResource("5_1cojt")
 
+[node name="Shop" type="GridContainer" parent="HUD_Layer/HUD"]
+visible = false
+layout_mode = 0
+offset_left = 445.0
+offset_top = 165.0
+offset_right = 675.0
+offset_bottom = 427.0
+
+[node name="ColorRect" type="ColorRect" parent="HUD_Layer/HUD/Shop"]
+custom_minimum_size = Vector2(40, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD_Layer/HUD/Shop/ColorRect"]
+texture_filter = 1
+position = Vector2(109, 11)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_uqdn7")
+animation = &"idle"
+frame_progress = 0.07679422
+speed_scale = 2.0
+
+[node name="Label" type="Label" parent="HUD_Layer/HUD/Shop"]
+layout_mode = 2
+text = "Eat acorns to grow stronger!"
+
+[node name="GridContainer" type="GridContainer" parent="HUD_Layer/HUD/Shop"]
+layout_mode = 2
+columns = 3
+
+[node name="MouthCapacity" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
+layout_mode = 2
+text = "Mouth Capacity +1
+"
+icon_alignment = 2
+
+[node name="MouthCapacityCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "2"
+horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD_Layer/HUD/Shop/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD_Layer/HUD/Shop/GridContainer/ColorRect"]
+position = Vector2(13, 15)
+texture = ExtResource("7_pt3ps")
+
+[node name="VisionRadius" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
+layout_mode = 2
+text = "Vision Radius +1
+"
+icon_alignment = 2
+
+[node name="VisionRadiusCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "2"
+horizontal_alignment = 2
+
+[node name="ColorRect2" type="ColorRect" parent="HUD_Layer/HUD/Shop/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD_Layer/HUD/Shop/GridContainer/ColorRect2"]
+position = Vector2(13, 15)
+texture = ExtResource("7_pt3ps")
+
+[node name="Movement" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
+layout_mode = 2
+text = "Energy +5
+"
+icon_alignment = 2
+
+[node name="MovementCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "5"
+horizontal_alignment = 2
+
+[node name="ColorRect3" type="ColorRect" parent="HUD_Layer/HUD/Shop/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD_Layer/HUD/Shop/GridContainer/ColorRect3"]
+position = Vector2(13, 15)
+texture = ExtResource("7_pt3ps")
+
+[node name="Hibernate" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
+layout_mode = 2
+text = "Hibernate
+"
+icon_alignment = 2
+
+[node name="HibernateCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "200"
+horizontal_alignment = 2
+
+[node name="ColorRect4" type="ColorRect" parent="HUD_Layer/HUD/Shop/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD_Layer/HUD/Shop/GridContainer/ColorRect4"]
+position = Vector2(13, 15)
+texture = ExtResource("7_pt3ps")
+
+[node name="Continue" type="Button" parent="HUD_Layer/HUD/Shop"]
+layout_mode = 2
+text = "Continue to Next Day
+"
+icon_alignment = 2
+
 [node name="Blackout" type="ColorRect" parent="HUD_Layer"]
-z_index = 1
 offset_right = 1152.0
 offset_bottom = 648.0
+mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -696,4 +929,9 @@ position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_no8kt")
 animation = &"play"
 
+[connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/MouthCapacity" to="." method="_on_mouth_capacity_pressed"]
+[connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/VisionRadius" to="." method="_on_vision_radius_pressed"]
+[connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/Movement" to="." method="_on_movement_pressed"]
+[connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/Hibernate" to="." method="_on_hibernate_pressed"]
+[connection signal="pressed" from="HUD_Layer/HUD/Shop/Continue" to="." method="_on_continue_pressed"]
 [connection signal="body_entered" from="Den" to="." method="_on_den_body_entered"]

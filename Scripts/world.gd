@@ -107,9 +107,18 @@ func set_player_view():
 
 func setup_new_day():
 	Globals.remaining_moves = Globals.total_moves
-	var den_pos : Vector2 = $TileMapLayer.map_to_local(Globals.den_position)
-	den_pos -= (Globals.tile_size/2)
-	$CharacterBody2D.global_position = den_pos
+	Globals.remaining_days -= 1
+	if Globals.remaining_days < 0:
+		pass #eventually game over here
+	else:
+		$HUD_Layer/HUD/Days.update_days()
+		$HUD_Layer/HUD/Moves.update_moves()
+	get_node("HUD_Layer/HUD/Shop").hide()
+	$CharacterBody2D/PlayerSprite.idle()
+	blackout_tween = create_tween()
+	blackout_tween.tween_property($HUD_Layer/Blackout, "color:a", 0.0, 2.0)
+	await get_tree().create_timer(2.2).timeout
+	Globals.end_of_day = false
 
 func pass_time():
 	set_player_view()
@@ -124,12 +133,14 @@ func pass_time():
 		blackout_tween = create_tween()
 		blackout_tween.tween_property($HUD_Layer/Blackout, "color:a", 0.3, 1)
 		await get_tree().create_timer(1).timeout
-		if !Globals.map_position == Globals.den_position:
-			$CharacterBody2D._move_to_den(den_pos)
+		$CharacterBody2D._move_to_den(den_pos)
 		await get_tree().create_timer(1.5).timeout
 		$CharacterBody2D/PlayerSprite.fall_asleep()
 		blackout_tween = create_tween()
 		blackout_tween.tween_property($HUD_Layer/Blackout, "color:a", 1.0, 2.0)
+		await get_tree().create_timer(2.2).timeout
+		get_node("HUD_Layer/HUD/Shop").show()
+		get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("idle", 1.0)
 		
 
 
@@ -146,3 +157,23 @@ func _on_den_body_entered(_body: Node2D) -> void:
 				Globals.banked_acorns += 5
 		$HUD_Layer/HUD/Cache.update_cache()
 		Globals.mouth_inventory = []
+
+
+func _on_mouth_capacity_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_vision_radius_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_movement_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_hibernate_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_continue_pressed() -> void:
+	setup_new_day()
