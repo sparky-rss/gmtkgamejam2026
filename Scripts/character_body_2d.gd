@@ -41,7 +41,8 @@ func _move_to_den(den_pos: Vector2):
 	var previous_position = global_position
 	global_position = den_pos
 	$PlayerSprite.global_position = previous_position
-	$PlayerSprite.run()	
+	if $PlayerSprite.global_position != global_position:
+		$PlayerSprite.run()	
 	if global_position.x < $PlayerSprite.global_position.x:
 		$PlayerSprite.face("left")
 	elif global_position.x > $PlayerSprite.global_position.x:

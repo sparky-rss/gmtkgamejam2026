@@ -561,7 +561,6 @@ sprite_frames = SubResource("SpriteFrames_axeuq")
 animation = &"golden"
 
 [node name="1" type="ColorRect" parent="HUD_Layer/HUD/Label/InventoryContainer"]
-visible = false
 custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 color = Color(0, 0, 0, 1)

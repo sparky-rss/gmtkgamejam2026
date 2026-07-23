@@ -7,7 +7,7 @@ var mouth_inventory : Array:
 		mouth_inventory = value
 		mouth_inventory_changed.emit(mouth_inventory)
 		
-var mouth_size : int = 1
+var mouth_size : int = 2
 var visible_radius : int = 3
 
 var banked_acorns : int = 0
