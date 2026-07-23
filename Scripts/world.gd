@@ -203,11 +203,37 @@ func _on_mouth_capacity_pressed() -> void:
 
 
 func _on_vision_radius_pressed() -> void:
-	pass # Replace with function body.
+	if !pause:
+		pause = true
+		eat()
+		await get_tree().create_timer(1).timeout
+		celebrate()
+		await get_tree().create_timer(1).timeout
+		idle()
+		Globals.banked_acorns -= Globals.VisionRadiusCostArray[Globals.VisionRadiusLevel]
+		Globals.VisionRadiusLevel += 1
+		Globals.visible_radius += 1
+		get_node("HUD_Layer/HUD/Cache").update_cache()
+		get_node("HUD_Layer/HUD/Shop/GridContainer/VisionRadiusCost").text = str(Globals.VisionRadiusCostArray[Globals.VisionRadiusLevel])
+		disable_relevant_buttons()
+		pause = false
 
 
 func _on_movement_pressed() -> void:
-	pass # Replace with function body.
+	if !pause:
+		pause = true
+		eat()
+		await get_tree().create_timer(1).timeout
+		celebrate()
+		await get_tree().create_timer(1).timeout
+		idle()
+		Globals.banked_acorns -= Globals.MovementCostArray[Globals.MovementLevel]
+		Globals.MovementLevel += 1
+		Globals.total_moves += 4
+		get_node("HUD_Layer/HUD/Cache").update_cache()
+		get_node("HUD_Layer/HUD/Shop/GridContainer/MovementCost").text = str(Globals.MovementCostArray[Globals.MovementLevel])
+		disable_relevant_buttons()
+		pause = false
 
 
 func _on_hibernate_pressed() -> void:

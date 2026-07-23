@@ -752,7 +752,7 @@ position = Vector2(134, 11)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_uqdn7")
 animation = &"idle"
-frame_progress = 0.31646097
+frame_progress = 0.036756482
 speed_scale = 2.0
 
 [node name="Label" type="Label" parent="HUD_Layer/HUD/Shop"]
