@@ -734,13 +734,16 @@ position = Vector2(20, 20)
 sprite_frames = SubResource("SpriteFrames_axeuq")
 animation = &"golden"
 
-[node name="Cache" type="Label" parent="HUD_Layer/HUD"]
+[node name="Cache" type="RichTextLabel" parent="HUD_Layer/HUD"]
 layout_mode = 0
 offset_left = 722.0
 offset_top = 15.0
 offset_right = 854.0
 offset_bottom = 38.0
-text = "Acorns Cached: 0"
+bbcode_enabled = true
+text = "[img=24x24]res://Sprites/AcornIcon.png[/img] in Cache: 0"
+fit_content = true
+scroll_active = false
 script = ExtResource("5_1cojt")
 
 [node name="Shop" type="GridContainer" parent="HUD_Layer/HUD"]
