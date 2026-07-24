@@ -1,9 +1,10 @@
-[gd_scene load_steps=104 format=4 uid="uid://m1m6a80qsrtw"]
+[gd_scene load_steps=105 format=4 uid="uid://m1m6a80qsrtw"]
 
 [ext_resource type="Script" uid="uid://d13omtisa0lkg" path="res://Scripts/world.gd" id="1_8j60k"]
 [ext_resource type="Texture2D" uid="uid://ffdtqelogs0w" path="res://Sprites/GRASS+.png" id="1_go701"]
 [ext_resource type="Script" uid="uid://b8uesnqu8yfn6" path="res://Scripts/moves.gd" id="2_k7acu"]
 [ext_resource type="Script" uid="uid://o5gubmpl5i52" path="res://Scripts/character_body_2d.gd" id="3_fo5ed"]
+[ext_resource type="Script" uid="uid://clfcagt6iydj5" path="res://Scenes/time.gd" id="3_hmc15"]
 [ext_resource type="Script" uid="uid://ctv431rtoa5uo" path="res://Scripts/days.gd" id="3_k7acu"]
 [ext_resource type="Texture2D" uid="uid://dqxd6c4q1bse2" path="res://Sprites/Acorns.png" id="4_0pcbe"]
 [ext_resource type="Texture2D" uid="uid://rlr660cikg0p" path="res://Sprites/Snow_christmass_tree2.png" id="4_5v1tr"]
@@ -626,6 +627,7 @@ offset_bottom = 50.0
 color = Color(0.46666667, 0.5803922, 0.57254905, 1)
 
 [node name="Moves" type="Label" parent="HUD_Layer/HUD"]
+visible = false
 layout_mode = 0
 offset_left = 25.0
 offset_top = 15.0
@@ -633,6 +635,15 @@ offset_right = 167.0
 offset_bottom = 38.0
 text = "Remaining Energy: 16"
 script = ExtResource("2_k7acu")
+
+[node name="Time" type="Label" parent="HUD_Layer/HUD"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 15.0
+offset_right = 167.0
+offset_bottom = 38.0
+text = "Remaining Time: 15"
+script = ExtResource("3_hmc15")
 
 [node name="Days" type="Label" parent="HUD_Layer/HUD"]
 layout_mode = 0
@@ -794,7 +805,7 @@ icon_alignment = 2
 [node name="VisionRadiusCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-text = "2"
+text = "5"
 horizontal_alignment = 2
 
 [node name="ColorRect2" type="ColorRect" parent="HUD_Layer/HUD/Shop/GridContainer"]
@@ -808,14 +819,14 @@ texture = ExtResource("7_pt3ps")
 
 [node name="Movement" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
-text = "Energy +4
+text = "Daily Time +4s
 "
 icon_alignment = 2
 
 [node name="MovementCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-text = "5"
+text = "2"
 horizontal_alignment = 2
 
 [node name="ColorRect3" type="ColorRect" parent="HUD_Layer/HUD/Shop/GridContainer"]
@@ -824,6 +835,27 @@ layout_mode = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="HUD_Layer/HUD/Shop/GridContainer/ColorRect3"]
+position = Vector2(13, 15)
+texture = ExtResource("7_pt3ps")
+
+[node name="Speed" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
+layout_mode = 2
+text = "Movement Speed+
+"
+icon_alignment = 2
+
+[node name="SpeedCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "5"
+horizontal_alignment = 2
+
+[node name="ColorRect5" type="ColorRect" parent="HUD_Layer/HUD/Shop/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD_Layer/HUD/Shop/GridContainer/ColorRect5"]
 position = Vector2(13, 15)
 texture = ExtResource("7_pt3ps")
 
@@ -930,9 +962,15 @@ position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_no8kt")
 animation = &"play"
 
+[node name="DayTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
 [connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/MouthCapacity" to="." method="_on_mouth_capacity_pressed"]
 [connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/VisionRadius" to="." method="_on_vision_radius_pressed"]
 [connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/Movement" to="." method="_on_movement_pressed"]
+[connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/Speed" to="." method="_on_speed_pressed"]
 [connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/Hibernate" to="." method="_on_hibernate_pressed"]
 [connection signal="pressed" from="HUD_Layer/HUD/Shop/Continue" to="." method="_on_continue_pressed"]
 [connection signal="body_entered" from="Den" to="." method="_on_den_body_entered"]
+[connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]

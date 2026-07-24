@@ -22,6 +22,17 @@ var MovementLevel : int = 0
 var MovementCostArray : Array = [2, 3, 4, 6, 8, 10, 15, 20, 25, "Sold Out"]
 var MovementMaxLevel : int = 9
 
+var total_time : float = 15.0
+var TimeLevel : int = 0
+var TimeCostArray : Array = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4, 6, 8, 10, "Sold Out"]
+var TimeMaxLevel : int = 15
+
+var current_speed : float = 0.5
+var SpeedLevel : int = 0
+var SpeedCostArray : Array = [5, 10, 25, "Sold Out"]
+var SpeedAmountArray : Array = [0.5, 0.45, 0.4, 0.35]
+var SpeedMaxLevel : int = 3
+
 const HibernationCost : int = 200
 
 var banked_acorns : int = 0

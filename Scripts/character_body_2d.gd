@@ -35,7 +35,7 @@ func _move(dir: Vector2):
 		sprite_node_pos_tween.kill()
 	sprite_node_pos_tween = create_tween()
 	sprite_node_pos_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	sprite_node_pos_tween.tween_property($PlayerSprite, "global_position", global_position, 0.5).set_trans(Tween.TRANS_SINE)
+	sprite_node_pos_tween.tween_property($PlayerSprite, "global_position", global_position, Globals.current_speed).set_trans(Tween.TRANS_SINE)
 	
 func _move_to_den(den_pos: Vector2):
 	var previous_position = global_position

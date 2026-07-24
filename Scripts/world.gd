@@ -9,6 +9,8 @@ func _ready() -> void:
 		Globals.setup()
 		setup_first_day()
 	Globals.mouth_inventory_changed.connect(mouth_inventory_update)
+	await get_tree().create_timer(1).timeout
+	get_node("DayTimer").start(Globals.total_time)
 
 func show_return():
 	get_node("Return").show()
@@ -118,32 +120,16 @@ func setup_new_day():
 	$CharacterBody2D/PlayerSprite.idle()
 	blackout_tween = create_tween()
 	blackout_tween.tween_property($HUD_Layer/Blackout, "color:a", 0.0, 2.0)
+	get_node("HUD_Layer/HUD/Time").update_text(Globals.total_time)
 	await get_tree().create_timer(2.2).timeout
 	Globals.end_of_day = false
+	await get_tree().create_timer(1).timeout
+	get_node("DayTimer").start(Globals.total_time)
 
 func pass_time():
 	set_player_view()
 	Globals.remaining_moves -= 1
-	$HUD_Layer/HUD/Moves.update_moves()
-	if Globals.remaining_moves == 0:
-		Globals.end_of_day = true
-		await get_tree().create_timer(0.5).timeout
-		$CharacterBody2D/PlayerSprite.idle()
-		var den_pos : Vector2 = $TileMapLayer.map_to_local(Globals.den_position)
-		den_pos -= (Globals.tile_size/2)
-		blackout_tween = create_tween()
-		blackout_tween.tween_property($HUD_Layer/Blackout, "color:a", 0.3, 1)
-		await get_tree().create_timer(1).timeout
-		$CharacterBody2D._move_to_den(den_pos)
-		await get_tree().create_timer(1.5).timeout
-		$CharacterBody2D/PlayerSprite.fall_asleep()
-		blackout_tween = create_tween()
-		blackout_tween.tween_property($HUD_Layer/Blackout, "color:a", 1.0, 2.0)
-		await get_tree().create_timer(2.2).timeout
-		get_node("HUD_Layer/HUD/Shop").show()
-		disable_relevant_buttons()
-		get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("idle", 1.0)
-		
+	$HUD_Layer/HUD/Moves.update_moves()		
 
 func disable_relevant_buttons():
 	var disable_mouth_upgrade = Globals.MouthCapacityLevel == Globals.MouthCapacityMaxLevel
@@ -154,10 +140,14 @@ func disable_relevant_buttons():
 	if !disable_vision_upgrade:
 		disable_vision_upgrade = Globals.banked_acorns < Globals.VisionRadiusCostArray[Globals.VisionRadiusLevel] 
 	get_node("HUD_Layer/HUD/Shop/GridContainer/VisionRadius").disabled = disable_vision_upgrade
-	var disable_movement_upgrade = Globals.MovementLevel == Globals.MovementMaxLevel
+	var disable_movement_upgrade = Globals.TimeLevel == Globals.TimeMaxLevel
 	if !disable_movement_upgrade:
-		disable_movement_upgrade = Globals.banked_acorns < Globals.MovementCostArray[Globals.MovementLevel]
+		disable_movement_upgrade = Globals.banked_acorns < Globals.TimeCostArray[Globals.TimeLevel]
 	get_node("HUD_Layer/HUD/Shop/GridContainer/Movement").disabled = disable_movement_upgrade
+	var disable_speed_upgrade = Globals.SpeedLevel == Globals.SpeedMaxLevel
+	if !disable_speed_upgrade:
+		disable_speed_upgrade = Globals.banked_acorns < Globals.SpeedCostArray[Globals.SpeedLevel]
+	get_node("HUD_Layer/HUD/Shop/GridContainer/Speed").disabled = disable_speed_upgrade
 	var disable_hibernate_upgrade = Globals.banked_acorns < Globals.HibernationCost
 	get_node("HUD_Layer/HUD/Shop/GridContainer/Hibernate").disabled = disable_hibernate_upgrade	
 	
@@ -187,6 +177,7 @@ func idle():
 func _on_mouth_capacity_pressed() -> void:
 	if !pause:
 		pause = true
+		button_pause_toggle(true)
 		eat()
 		await get_tree().create_timer(1).timeout
 		celebrate()
@@ -198,6 +189,7 @@ func _on_mouth_capacity_pressed() -> void:
 		get_node("HUD_Layer/HUD/Cache").update_cache()
 		get_node(str("HUD_Layer/HUD/Label/InventoryContainer/", Globals.MouthCapacityLevel)).show()
 		get_node("HUD_Layer/HUD/Shop/GridContainer/MouthCapacityCost").text = str(Globals.MouthCapacityCostArray[Globals.MouthCapacityLevel])
+		button_pause_toggle(false)
 		disable_relevant_buttons()
 		pause = false
 
@@ -205,6 +197,7 @@ func _on_mouth_capacity_pressed() -> void:
 func _on_vision_radius_pressed() -> void:
 	if !pause:
 		pause = true
+		button_pause_toggle(true)
 		eat()
 		await get_tree().create_timer(1).timeout
 		celebrate()
@@ -215,6 +208,7 @@ func _on_vision_radius_pressed() -> void:
 		Globals.visible_radius += 1
 		get_node("HUD_Layer/HUD/Cache").update_cache()
 		get_node("HUD_Layer/HUD/Shop/GridContainer/VisionRadiusCost").text = str(Globals.VisionRadiusCostArray[Globals.VisionRadiusLevel])
+		button_pause_toggle(false)
 		disable_relevant_buttons()
 		pause = false
 
@@ -222,23 +216,70 @@ func _on_vision_radius_pressed() -> void:
 func _on_movement_pressed() -> void:
 	if !pause:
 		pause = true
+		button_pause_toggle(true)
 		eat()
 		await get_tree().create_timer(1).timeout
 		celebrate()
 		await get_tree().create_timer(1).timeout
 		idle()
-		Globals.banked_acorns -= Globals.MovementCostArray[Globals.MovementLevel]
-		Globals.MovementLevel += 1
-		Globals.total_moves += 4
+		Globals.banked_acorns -= Globals.TimeCostArray[Globals.TimeLevel]
+		Globals.TimeLevel += 1
+		Globals.total_time += 4.0
 		get_node("HUD_Layer/HUD/Cache").update_cache()
-		get_node("HUD_Layer/HUD/Shop/GridContainer/MovementCost").text = str(Globals.MovementCostArray[Globals.MovementLevel])
+		get_node("HUD_Layer/HUD/Shop/GridContainer/MovementCost").text = str(Globals.TimeCostArray[Globals.TimeLevel])
+		button_pause_toggle(false)
 		disable_relevant_buttons()
 		pause = false
 
+func _on_speed_pressed() -> void:
+	if !pause:
+		pause = true
+		button_pause_toggle(true)
+		eat()
+		await get_tree().create_timer(1).timeout
+		celebrate()
+		await get_tree().create_timer(1).timeout
+		idle()
+		Globals.banked_acorns -= Globals.SpeedCostArray[Globals.SpeedLevel]
+		Globals.SpeedLevel += 1
+		Globals.current_speed = Globals.SpeedAmountArray[Globals.SpeedLevel]
+		get_node("HUD_Layer/HUD/Cache").update_cache()
+		get_node("HUD_Layer/HUD/Shop/GridContainer/SpeedCost").text = str(Globals.SpeedCostArray[Globals.SpeedLevel])
+		button_pause_toggle(false)
+		disable_relevant_buttons()
+		pause = false
 
+func button_pause_toggle(toggle: bool):
+	get_node("HUD_Layer/HUD/Shop/Continue").disabled = toggle
+	get_node("HUD_Layer/HUD/Shop/GridContainer/MouthCapacity").disabled = toggle
+	get_node("HUD_Layer/HUD/Shop/GridContainer/VisionRadius").disabled = toggle
+	get_node("HUD_Layer/HUD/Shop/GridContainer/Movement").disabled = toggle
+	get_node("HUD_Layer/HUD/Shop/GridContainer/Speed").disabled = toggle
+	get_node("HUD_Layer/HUD/Shop/GridContainer/Hibernate").disabled = toggle
+	
 func _on_hibernate_pressed() -> void:
-	pass # Replace with function body.
+	pass # Replace with win game
 
 
 func _on_continue_pressed() -> void:
 	setup_new_day()
+
+
+func _on_day_timer_timeout() -> void:
+	Globals.end_of_day = true
+	await get_tree().create_timer(0.5).timeout
+	$CharacterBody2D/PlayerSprite.idle()
+	var den_pos : Vector2 = $TileMapLayer.map_to_local(Globals.den_position)
+	den_pos -= (Globals.tile_size/2)
+	blackout_tween = create_tween()
+	blackout_tween.tween_property($HUD_Layer/Blackout, "color:a", 0.3, 1)
+	await get_tree().create_timer(1).timeout
+	$CharacterBody2D._move_to_den(den_pos)
+	await get_tree().create_timer(1.5).timeout
+	$CharacterBody2D/PlayerSprite.fall_asleep()
+	blackout_tween = create_tween()
+	blackout_tween.tween_property($HUD_Layer/Blackout, "color:a", 1.0, 2.0)
+	await get_tree().create_timer(2.2).timeout
+	get_node("HUD_Layer/HUD/Shop").show()
+	disable_relevant_buttons()
+	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("idle", 1.0)
