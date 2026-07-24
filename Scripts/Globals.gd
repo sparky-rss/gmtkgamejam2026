@@ -2,11 +2,18 @@ extends Node
 
 signal mouth_inventory_changed(new_value)
 
+var running_home : bool = false
+
 var mouth_inventory : Array:
 	set(value):
 		mouth_inventory = value
 		mouth_inventory_changed.emit(mouth_inventory)
-		
+
+var run_home_power : bool = false
+var RunHomeLevel : int = 0
+var RunHomeCostArray : Array = [25, "Sold Out"]
+var RunHomeMaxLevel : int = 1
+
 var mouth_size : int = 1
 var MouthCapacityLevel : int = 0
 var MouthCapacityCostArray : Array = [2, 5, 10, 25, "Sold Out"]
@@ -51,6 +58,7 @@ const top_left_corner : Vector2i = Vector2i(-19, -11)
 const bottom_right_corner : Vector2i = Vector2i(19, 11)
 
 const acorn_count : int = 200
+const silver_acorn_count : int = 30
 const golden_acorn_count : int = 15
 
 const big_trees_to_generate: int = 16

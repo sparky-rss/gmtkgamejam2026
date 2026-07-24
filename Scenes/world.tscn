@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=4 uid="uid://m1m6a80qsrtw"]
+[gd_scene load_steps=114 format=4 uid="uid://m1m6a80qsrtw"]
 
 [ext_resource type="Script" uid="uid://d13omtisa0lkg" path="res://Scripts/world.gd" id="1_8j60k"]
 [ext_resource type="Texture2D" uid="uid://ffdtqelogs0w" path="res://Sprites/GRASS+.png" id="1_go701"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://ddro81rc5ixa7" path="res://Sprites/Snow_christmass_tree3.png" id="8_0pcbe"]
 [ext_resource type="Texture2D" uid="uid://chfj5gjajkf25" path="res://Sprites/Cave3.png" id="9_5v1tr"]
 [ext_resource type="Texture2D" uid="uid://dvfalur4gwr1g" path="res://Sprites/Rock1_3.png" id="9_axeuq"]
+[ext_resource type="Texture2D" uid="uid://cgbwdram16x7l" path="res://Sprites/Acorns (Silver).png" id="9_dt0r1"]
 [ext_resource type="Texture2D" uid="uid://bwo3tvpgemcb7" path="res://Sprites/50_perc_transp.png" id="9_yq1aw"]
 [ext_resource type="Texture2D" uid="uid://bu6dm0pwkumdw" path="res://Sprites/Rock1_4.png" id="10_1cojt"]
 [ext_resource type="Texture2D" uid="uid://b5a4srwhdgv0w" path="res://Sprites/dark.png" id="10_pyn1s"]
@@ -173,6 +174,38 @@ region = Rect2(32, 32, 16, 16)
 atlas = ExtResource("4_0pcbe")
 region = Rect2(0, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqdn7"]
+atlas = ExtResource("9_dt0r1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwaj6"]
+atlas = ExtResource("9_dt0r1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36g3o"]
+atlas = ExtResource("9_dt0r1")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhf2b"]
+atlas = ExtResource("9_dt0r1")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g44x5"]
+atlas = ExtResource("9_dt0r1")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwnki"]
+atlas = ExtResource("9_dt0r1")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvubk"]
+atlas = ExtResource("9_dt0r1")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eskoj"]
+atlas = ExtResource("9_dt0r1")
+region = Rect2(32, 32, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_axeuq"]
 animations = [{
 "frames": [{
@@ -210,6 +243,35 @@ animations = [{
 }],
 "loop": true,
 "name": &"normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqdn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwaj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36g3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhf2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g44x5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwnki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvubk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eskoj")
+}],
+"loop": true,
+"name": &"silver",
 "speed": 5.0
 }]
 
@@ -791,6 +853,27 @@ color = Color(0, 0, 0, 1)
 position = Vector2(13, 15)
 texture = ExtResource("7_pt3ps")
 
+[node name="RunHome" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
+layout_mode = 2
+text = "Gain 'Return'
+"
+icon_alignment = 2
+
+[node name="RunHomeCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "25"
+horizontal_alignment = 2
+
+[node name="ColorRect6" type="ColorRect" parent="HUD_Layer/HUD/Shop/GridContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD_Layer/HUD/Shop/GridContainer/ColorRect6"]
+position = Vector2(13, 15)
+texture = ExtResource("7_pt3ps")
+
 [node name="Hibernate" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 text = "Hibernate
@@ -846,7 +929,7 @@ visible = false
 texture_filter = 1
 position = Vector2(20, 20)
 sprite_frames = SubResource("SpriteFrames_axeuq")
-animation = &"golden"
+animation = &"silver"
 
 [node name="1" type="ColorRect" parent="HUD_Layer/HUD/InventoryContainer"]
 visible = false
@@ -984,6 +1067,7 @@ one_shot = true
 [connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/VisionRadius" to="." method="_on_vision_radius_pressed"]
 [connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/Movement" to="." method="_on_movement_pressed"]
 [connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/Speed" to="." method="_on_speed_pressed"]
+[connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/RunHome" to="." method="_on_run_home_pressed"]
 [connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/Hibernate" to="." method="_on_hibernate_pressed"]
 [connection signal="pressed" from="HUD_Layer/HUD/Shop/Continue" to="." method="_on_continue_pressed"]
 [connection signal="body_entered" from="Den" to="." method="_on_den_body_entered"]

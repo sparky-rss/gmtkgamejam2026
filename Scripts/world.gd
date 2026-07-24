@@ -85,19 +85,29 @@ func spread_acorns():
 	for spot in spots_to_erase:
 		open_spots.erase(spot)
 	open_spots.shuffle()
-	var total_acorn_count = Globals.acorn_count + Globals.golden_acorn_count
+	var total_acorn_count = Globals.acorn_count + Globals.silver_acorn_count + Globals.golden_acorn_count
 	for i in total_acorn_count:
 		var new_acorn = acorn_scene.instantiate()
 		var acorn_pos : Vector2 = $TreeLayer.map_to_local(open_spots[i])
 		var global_acorn_pos = to_global(acorn_pos)
 		new_acorn.global_position = global_acorn_pos + Vector2(17,23)
 		add_child(new_acorn)
-		if i >= Globals.acorn_count:
+		if i >=  Globals.acorn_count + Globals.silver_acorn_count:
 			new_acorn.get_node(("AnimatedSprite2D")).play("golden", 1.0)
 			new_acorn.state = "golden"
+		elif i >= Globals.acorn_count and i < Globals.acorn_count + Globals.silver_acorn_count:
+			new_acorn.get_node(("AnimatedSprite2D")).play("silver", 1.0)
+			new_acorn.state = "silver"
 		else:
-			new_acorn.get_node(("AnimatedSprite2D")).play("normal", 1.0)
-			new_acorn.state = "normal"
+			if abs(open_spots[i].x) > 18 or abs(open_spots[i].y) > 10:
+				new_acorn.get_node(("AnimatedSprite2D")).play("golden", 1.0)
+				new_acorn.state = "golden"
+			elif abs(open_spots[i].x) > 16 or abs(open_spots[i].y) > 9:
+				new_acorn.get_node(("AnimatedSprite2D")).play("silver", 1.0)
+				new_acorn.state = "silver"
+			else:
+				new_acorn.get_node(("AnimatedSprite2D")).play("normal", 1.0)
+				new_acorn.state = "normal"
 
 func set_player_view():
 	var player_cell = Globals.map_position
@@ -149,11 +159,15 @@ func disable_relevant_buttons():
 	if !disable_speed_upgrade:
 		disable_speed_upgrade = Globals.banked_acorns < Globals.SpeedCostArray[Globals.SpeedLevel]
 	get_node("HUD_Layer/HUD/Shop/GridContainer/Speed").disabled = disable_speed_upgrade
+	var disable_run_home_upgrade = Globals.RunHomeLevel == Globals.RunHomeMaxLevel
+	if !disable_run_home_upgrade:
+		disable_run_home_upgrade = Globals.banked_acorns < Globals.RunHomeCostArray[Globals.RunHomeLevel]
+	get_node("HUD_Layer/HUD/Shop/GridContainer/RunHome").disabled = disable_run_home_upgrade
 	var disable_hibernate_upgrade = Globals.banked_acorns < Globals.HibernationCost
 	get_node("HUD_Layer/HUD/Shop/GridContainer/Hibernate").disabled = disable_hibernate_upgrade	
 	
 func _on_den_body_entered(_body: Node2D) -> void:
-	if Globals.end_of_day:
+	if Globals.running_home:
 		await get_tree().create_timer(1.3).timeout
 	else:
 		await get_tree().create_timer(0.3).timeout
@@ -161,6 +175,8 @@ func _on_den_body_entered(_body: Node2D) -> void:
 		for i in Globals.mouth_inventory:
 			if i == "normal":
 				Globals.banked_acorns += 1
+			elif i == "silver":
+				Globals.banked_acorns += 3
 			elif i == "golden":
 				Globals.banked_acorns += 5
 		$HUD_Layer/HUD/Cache.update_cache()
@@ -252,6 +268,24 @@ func _on_speed_pressed() -> void:
 		disable_relevant_buttons()
 		pause = false
 
+func _on_run_home_pressed() -> void:
+	if !pause:
+		pause = true
+		button_pause_toggle(true)
+		eat()
+		await get_tree().create_timer(1).timeout
+		celebrate()
+		await get_tree().create_timer(1).timeout
+		idle()
+		Globals.banked_acorns -= Globals.RunHomeCostArray[Globals.RunHomeLevel]
+		Globals.RunHomeLevel += 1
+		Globals.run_home_power = true
+		get_node("HUD_Layer/HUD/Cache").update_cache()
+		get_node("HUD_Layer/HUD/Shop/GridContainer/RunHomeCost").text = str(Globals.RunHomeCostArray[Globals.RunHomeLevel])
+		button_pause_toggle(false)
+		disable_relevant_buttons()
+		pause = false
+		
 func button_pause_toggle(toggle: bool):
 	get_node("HUD_Layer/HUD/Shop/Continue").disabled = toggle
 	get_node("HUD_Layer/HUD/Shop/GridContainer/MouthCapacity").disabled = toggle
@@ -259,6 +293,7 @@ func button_pause_toggle(toggle: bool):
 	get_node("HUD_Layer/HUD/Shop/GridContainer/Movement").disabled = toggle
 	get_node("HUD_Layer/HUD/Shop/GridContainer/Speed").disabled = toggle
 	get_node("HUD_Layer/HUD/Shop/GridContainer/Hibernate").disabled = toggle
+	get_node("HUD_Layer/HUD/Shop/GridContainer/RunHome").disabled = toggle
 	
 func _on_hibernate_pressed() -> void:
 	pass # Replace with win game
@@ -267,7 +302,11 @@ func _on_hibernate_pressed() -> void:
 func _on_continue_pressed() -> void:
 	setup_new_day()
 
-
+func return_home():
+	var den_pos : Vector2 = $TileMapLayer.map_to_local(Globals.den_position)
+	den_pos -= (Globals.tile_size/2)
+	$CharacterBody2D._move_to_den(den_pos)
+	
 func _on_day_timer_timeout() -> void:
 	Globals.end_of_day = true
 	await get_tree().create_timer(0.5).timeout

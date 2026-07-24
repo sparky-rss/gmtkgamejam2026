@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://tfugu7js7mir"]
+[gd_scene load_steps=23 format=3 uid="uid://tfugu7js7mir"]
 
 [ext_resource type="Script" uid="uid://cijmi3hsxyfql" path="res://Scripts/acorn.gd" id="1_76pf4"]
 [ext_resource type="Texture2D" uid="uid://dqxd6c4q1bse2" path="res://Sprites/Acorns.png" id="1_dtqib"]
+[ext_resource type="Texture2D" uid="uid://cgbwdram16x7l" path="res://Sprites/Acorns (Silver).png" id="3_7sqex"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_76pf4"]
 atlas = ExtResource("1_dtqib")
@@ -38,6 +39,38 @@ region = Rect2(32, 32, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_m5rsc"]
 atlas = ExtResource("1_dtqib")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okwc8"]
+atlas = ExtResource("3_7sqex")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_synwl"]
+atlas = ExtResource("3_7sqex")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acvxi"]
+atlas = ExtResource("3_7sqex")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvquh"]
+atlas = ExtResource("3_7sqex")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rld6g"]
+atlas = ExtResource("3_7sqex")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qdsk"]
+atlas = ExtResource("3_7sqex")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5qhh"]
+atlas = ExtResource("3_7sqex")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y6ny"]
+atlas = ExtResource("3_7sqex")
+region = Rect2(32, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_okwc8"]
 animations = [{
@@ -77,6 +110,35 @@ animations = [{
 "loop": true,
 "name": &"normal",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okwc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_synwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acvxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvquh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rld6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qdsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5qhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6y6ny")
+}],
+"loop": true,
+"name": &"silver",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dtqib"]
@@ -87,7 +149,8 @@ script = ExtResource("1_76pf4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_okwc8")
-animation = &"normal"
+animation = &"silver"
+frame_progress = 0.44521022
 
 [node name="Area2D" type="Area2D" parent="."]
 

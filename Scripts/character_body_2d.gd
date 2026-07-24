@@ -23,6 +23,9 @@ func _physics_process(_delta: float) -> void:
 			_move(Vector2(1, 0))
 			$PlayerSprite.face("right")
 			get_parent().pass_time()
+		elif Input.is_action_pressed("run_home") and Globals.run_home_power: 
+			get_parent().return_home()
+			get_parent().pass_time()
 
 func _move(dir: Vector2):
 	global_position += dir * Globals.tile_size
@@ -38,6 +41,7 @@ func _move(dir: Vector2):
 	sprite_node_pos_tween.tween_property($PlayerSprite, "global_position", global_position, Globals.current_speed).set_trans(Tween.TRANS_SINE)
 	
 func _move_to_den(den_pos: Vector2):
+	Globals.running_home = true
 	var previous_position = global_position
 	global_position = den_pos
 	$PlayerSprite.global_position = previous_position
@@ -52,4 +56,5 @@ func _move_to_den(den_pos: Vector2):
 	sprite_node_pos_tween = create_tween()
 	sprite_node_pos_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	sprite_node_pos_tween.tween_property($PlayerSprite, "global_position", global_position, 1.5).set_trans(Tween.TRANS_LINEAR)
-	
+	await get_tree().create_timer(1.3).timeout
+	Globals.running_home = false
