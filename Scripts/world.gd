@@ -9,7 +9,8 @@ func _ready() -> void:
 		Globals.setup()
 		setup_first_day()
 	Globals.mouth_inventory_changed.connect(mouth_inventory_update)
-	await get_tree().create_timer(1).timeout
+	get_node("HUD_Layer/HUD/Days").update_days()
+	await get_tree().create_timer(2).timeout
 	get_node("DayTimer").start(Globals.total_time)
 
 func show_return():
@@ -26,12 +27,12 @@ func mouth_inventory_update(new_mouth_inventory : Array):
 		hide_return()
 	if new_mouth_inventory == []:
 		for i in Globals.mouth_size:
-			var target_container = str("HUD_Layer/HUD/Label/InventoryContainer/",i,"/AnimatedSprite2D")
+			var target_container = str("HUD_Layer/HUD/InventoryContainer/",i,"/AnimatedSprite2D")
 			var target_node = get_node(target_container)
 			target_node.hide()
 	else:
 		for i in new_mouth_inventory.size():
-			var target_container = str("HUD_Layer/HUD/Label/InventoryContainer/",i,"/AnimatedSprite2D")
+			var target_container = str("HUD_Layer/HUD/InventoryContainer/",i,"/AnimatedSprite2D")
 			var target_node = get_node(target_container)
 			target_node.show()
 			target_node.play(new_mouth_inventory[i], 1.0)
@@ -187,7 +188,7 @@ func _on_mouth_capacity_pressed() -> void:
 		Globals.MouthCapacityLevel += 1
 		Globals.mouth_size += 1
 		get_node("HUD_Layer/HUD/Cache").update_cache()
-		get_node(str("HUD_Layer/HUD/Label/InventoryContainer/", Globals.MouthCapacityLevel)).show()
+		get_node(str("HUD_Layer/HUD/InventoryContainer/", Globals.MouthCapacityLevel)).show()
 		get_node("HUD_Layer/HUD/Shop/GridContainer/MouthCapacityCost").text = str(Globals.MouthCapacityCostArray[Globals.MouthCapacityLevel])
 		button_pause_toggle(false)
 		disable_relevant_buttons()
@@ -225,6 +226,8 @@ func _on_movement_pressed() -> void:
 		Globals.banked_acorns -= Globals.TimeCostArray[Globals.TimeLevel]
 		Globals.TimeLevel += 1
 		Globals.total_time += 4.0
+
+		get_node("HUD_Layer/HUD/Time").update_text(Globals.total_time)
 		get_node("HUD_Layer/HUD/Cache").update_cache()
 		get_node("HUD_Layer/HUD/Shop/GridContainer/MovementCost").text = str(Globals.TimeCostArray[Globals.TimeLevel])
 		button_pause_toggle(false)
@@ -283,3 +286,4 @@ func _on_day_timer_timeout() -> void:
 	get_node("HUD_Layer/HUD/Shop").show()
 	disable_relevant_buttons()
 	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("idle", 1.0)
+	get_node("HUD_Layer/HUD/Time").update_text(Globals.total_time)

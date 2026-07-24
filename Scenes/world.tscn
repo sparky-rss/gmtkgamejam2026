@@ -28,82 +28,6 @@
 [ext_resource type="Script" uid="uid://d1oqoq348vsvw" path="res://Scripts/den.gd" id="19_axeuq"]
 [ext_resource type="Texture2D" uid="uid://i8xiwuepxn75" path="res://Sprites/down_arrow (1).png" id="24_xbk3s"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_76pf4"]
-atlas = ExtResource("4_0pcbe")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7sqex"]
-atlas = ExtResource("4_0pcbe")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ryjs"]
-atlas = ExtResource("4_0pcbe")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nyyjb"]
-atlas = ExtResource("4_0pcbe")
-region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ps4mp"]
-atlas = ExtResource("4_0pcbe")
-region = Rect2(32, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oo2mo"]
-atlas = ExtResource("4_0pcbe")
-region = Rect2(0, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6b3av"]
-atlas = ExtResource("4_0pcbe")
-region = Rect2(16, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wv3r8"]
-atlas = ExtResource("4_0pcbe")
-region = Rect2(32, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m5rsc"]
-atlas = ExtResource("4_0pcbe")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_axeuq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_76pf4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7sqex")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5ryjs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nyyjb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ps4mp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oo2mo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6b3av")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wv3r8")
-}],
-"loop": true,
-"name": &"golden",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m5rsc")
-}],
-"loop": true,
-"name": &"normal",
-"speed": 5.0
-}]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_lkcvt"]
 atlas = ExtResource("6_i4fjy")
 region = Rect2(0, 128, 32, 32)
@@ -210,6 +134,82 @@ animations = [{
 }],
 "loop": true,
 "name": &"joy",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76pf4"]
+atlas = ExtResource("4_0pcbe")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sqex"]
+atlas = ExtResource("4_0pcbe")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ryjs"]
+atlas = ExtResource("4_0pcbe")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyyjb"]
+atlas = ExtResource("4_0pcbe")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps4mp"]
+atlas = ExtResource("4_0pcbe")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo2mo"]
+atlas = ExtResource("4_0pcbe")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b3av"]
+atlas = ExtResource("4_0pcbe")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv3r8"]
+atlas = ExtResource("4_0pcbe")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5rsc"]
+atlas = ExtResource("4_0pcbe")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_axeuq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76pf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sqex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ryjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyyjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps4mp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo2mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6b3av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv3r8")
+}],
+"loop": true,
+"name": &"golden",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5rsc")
+}],
+"loop": true,
+"name": &"normal",
 "speed": 5.0
 }]
 
@@ -638,112 +638,41 @@ script = ExtResource("2_k7acu")
 
 [node name="Time" type="Label" parent="HUD_Layer/HUD"]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 15.0
-offset_right = 167.0
-offset_bottom = 38.0
-text = "Remaining Time: 15"
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 343.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 30
+text = "Time Remaining: 15"
 script = ExtResource("3_hmc15")
 
 [node name="Days" type="Label" parent="HUD_Layer/HUD"]
 layout_mode = 0
-offset_left = 972.0
-offset_top = 15.0
-offset_right = 1135.0
-offset_bottom = 38.0
-text = "Days Until Winter: 10"
+offset_left = 1240.0
+offset_top = 284.0
+offset_right = 2087.0
+offset_bottom = 402.0
+theme_override_font_sizes/font_size = 86
+text = "10 Days Until Winter"
 horizontal_alignment = 2
 script = ExtResource("3_k7acu")
 
-[node name="Label" type="Label" parent="HUD_Layer/HUD"]
-layout_mode = 0
-offset_left = 228.0
-offset_top = 15.0
-offset_right = 307.0
-offset_bottom = 38.0
-text = "In Mouth: "
-
-[node name="InventoryContainer" type="HBoxContainer" parent="HUD_Layer/HUD/Label"]
-layout_mode = 0
-offset_left = 84.0
-offset_top = -10.0
-offset_right = 300.0
-offset_bottom = 30.0
-
-[node name="0" type="ColorRect" parent="HUD_Layer/HUD/Label/InventoryContainer"]
-custom_minimum_size = Vector2(40, 20)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD_Layer/HUD/Label/InventoryContainer/0"]
-visible = false
-texture_filter = 1
-position = Vector2(20, 20)
-sprite_frames = SubResource("SpriteFrames_axeuq")
-animation = &"golden"
-
-[node name="1" type="ColorRect" parent="HUD_Layer/HUD/Label/InventoryContainer"]
-visible = false
-custom_minimum_size = Vector2(40, 20)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD_Layer/HUD/Label/InventoryContainer/1"]
-visible = false
-texture_filter = 1
-position = Vector2(20, 20)
-sprite_frames = SubResource("SpriteFrames_axeuq")
-animation = &"golden"
-
-[node name="2" type="ColorRect" parent="HUD_Layer/HUD/Label/InventoryContainer"]
-visible = false
-custom_minimum_size = Vector2(40, 20)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD_Layer/HUD/Label/InventoryContainer/2"]
-visible = false
-texture_filter = 1
-position = Vector2(20, 20)
-sprite_frames = SubResource("SpriteFrames_axeuq")
-animation = &"golden"
-
-[node name="3" type="ColorRect" parent="HUD_Layer/HUD/Label/InventoryContainer"]
-visible = false
-custom_minimum_size = Vector2(40, 20)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD_Layer/HUD/Label/InventoryContainer/3"]
-visible = false
-texture_filter = 1
-position = Vector2(20, 20)
-sprite_frames = SubResource("SpriteFrames_axeuq")
-animation = &"golden"
-
-[node name="4" type="ColorRect" parent="HUD_Layer/HUD/Label/InventoryContainer"]
-visible = false
-custom_minimum_size = Vector2(40, 20)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD_Layer/HUD/Label/InventoryContainer/4"]
-visible = false
-texture_filter = 1
-position = Vector2(20, 20)
-sprite_frames = SubResource("SpriteFrames_axeuq")
-animation = &"golden"
-
 [node name="Cache" type="RichTextLabel" parent="HUD_Layer/HUD"]
-layout_mode = 0
-offset_left = 722.0
-offset_top = 15.0
-offset_right = 854.0
-offset_bottom = 38.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -253.0
+offset_top = 5.0
+offset_right = -15.0
+offset_bottom = 47.0
+grow_horizontal = 0
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[img=24x24]res://Sprites/AcornIcon.png[/img] in Cache: 0"
 fit_content = true
 scroll_active = false
+horizontal_alignment = 2
 script = ExtResource("5_1cojt")
 
 [node name="Shop" type="GridContainer" parent="HUD_Layer/HUD"]
@@ -888,6 +817,88 @@ layout_mode = 2
 text = "Continue to Next Day
 "
 icon_alignment = 2
+
+[node name="Start" type="Marker2D" parent="HUD_Layer/HUD"]
+position = Vector2(1239, 286)
+
+[node name="End" type="Marker2D" parent="HUD_Layer/HUD"]
+position = Vector2(-1635, 286)
+
+[node name="InventoryContainer" type="HBoxContainer" parent="HUD_Layer/HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = 5.0
+offset_right = 108.0
+offset_bottom = 45.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="0" type="ColorRect" parent="HUD_Layer/HUD/InventoryContainer"]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD_Layer/HUD/InventoryContainer/0"]
+visible = false
+texture_filter = 1
+position = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_axeuq")
+animation = &"golden"
+
+[node name="1" type="ColorRect" parent="HUD_Layer/HUD/InventoryContainer"]
+visible = false
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD_Layer/HUD/InventoryContainer/1"]
+visible = false
+texture_filter = 1
+position = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_axeuq")
+animation = &"golden"
+
+[node name="2" type="ColorRect" parent="HUD_Layer/HUD/InventoryContainer"]
+visible = false
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD_Layer/HUD/InventoryContainer/2"]
+visible = false
+texture_filter = 1
+position = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_axeuq")
+animation = &"golden"
+
+[node name="3" type="ColorRect" parent="HUD_Layer/HUD/InventoryContainer"]
+visible = false
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD_Layer/HUD/InventoryContainer/3"]
+visible = false
+texture_filter = 1
+position = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_axeuq")
+animation = &"golden"
+
+[node name="4" type="ColorRect" parent="HUD_Layer/HUD/InventoryContainer"]
+visible = false
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD_Layer/HUD/InventoryContainer/4"]
+visible = false
+texture_filter = 1
+position = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_axeuq")
+animation = &"golden"
 
 [node name="Blackout" type="ColorRect" parent="HUD_Layer"]
 offset_right = 1152.0
