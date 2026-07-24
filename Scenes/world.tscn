@@ -771,6 +771,7 @@ columns = 3
 
 [node name="MouthCapacity" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
+tooltip_text = "Gain an additional slot in which to carry acorns."
 text = "Mouth Capacity +1
 "
 icon_alignment = 2
@@ -792,6 +793,7 @@ texture = ExtResource("7_pt3ps")
 
 [node name="VisionRadius" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
+tooltip_text = "Reveal one tile further while moving around the map."
 text = "Vision Radius +1
 "
 icon_alignment = 2
@@ -813,6 +815,7 @@ texture = ExtResource("7_pt3ps")
 
 [node name="Movement" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
+tooltip_text = "Adds 4 more seconds to the collection timer each day."
 text = "Daily Time +4s
 "
 icon_alignment = 2
@@ -834,6 +837,7 @@ texture = ExtResource("7_pt3ps")
 
 [node name="Speed" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
+tooltip_text = "Increases your movement speed by 0.05s per tile."
 text = "Movement Speed+
 "
 icon_alignment = 2
@@ -855,6 +859,7 @@ texture = ExtResource("7_pt3ps")
 
 [node name="RunHome" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
+tooltip_text = "Gain the 'Return' ability. (Press Space to travel  straight back to your den.)"
 text = "Gain 'Return'
 "
 icon_alignment = 2
@@ -876,6 +881,7 @@ texture = ExtResource("7_pt3ps")
 
 [node name="Hibernate" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
+tooltip_text = "Sleep for the winter, and win the game!"
 text = "Hibernate
 "
 icon_alignment = 2
