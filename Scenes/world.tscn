@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=4 uid="uid://m1m6a80qsrtw"]
+[gd_scene load_steps=121 format=4 uid="uid://m1m6a80qsrtw"]
 
 [ext_resource type="Script" uid="uid://d13omtisa0lkg" path="res://Scripts/world.gd" id="1_8j60k"]
 [ext_resource type="Texture2D" uid="uid://ffdtqelogs0w" path="res://Sprites/GRASS+.png" id="1_go701"]
@@ -81,6 +81,14 @@ region = Rect2(160, 128, 32, 32)
 atlas = ExtResource("6_i4fjy")
 region = Rect2(0, 160, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry8tx"]
+atlas = ExtResource("6_i4fjy")
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq5fj"]
+atlas = ExtResource("6_i4fjy")
+region = Rect2(128, 160, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_uqdn7"]
 animations = [{
 "frames": [{
@@ -135,6 +143,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"joy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ry8tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq5fj")
+}],
+"loop": true,
+"name": &"sleep",
 "speed": 5.0
 }]
 
@@ -796,12 +815,12 @@ size_flags_horizontal = 3
 color = Color(0, 0, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD_Layer/HUD/Shop/ColorRect"]
+z_index = 5
 texture_filter = 1
 position = Vector2(134, 11)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_uqdn7")
-animation = &"idle"
-frame_progress = 0.036756482
+animation = &"sleep"
 speed_scale = 2.0
 
 [node name="Label" type="Label" parent="HUD_Layer/HUD/Shop"]
@@ -979,6 +998,72 @@ position = Vector2(1239, 286)
 [node name="End" type="Marker2D" parent="HUD_Layer/HUD"]
 position = Vector2(-1635, 286)
 
+[node name="CreditsStart" type="Marker2D" parent="HUD_Layer/HUD"]
+position = Vector2(583, 771)
+
+[node name="Credits" type="Label" parent="HUD_Layer/HUD"]
+z_index = 5
+layout_mode = 0
+offset_left = 459.0
+offset_top = 771.0
+offset_right = 836.0
+offset_bottom = 1574.0
+text = "Credits:
+
+Created by Ryan Siegel-Stechler
+for GMTK Game Jam 2026
+\"Count Down\"
+
+Squirrel Sprites by:
+Elthen
+https://elthen.itch.io/
+
+Grass Sprites by:
+SciGho
+https://ninjikin.itch.io
+
+Trees/Rocks by:
+CraftPix
+https://craftpix.net/
+
+Acorns/Cave by:
+Ryan Siegel-Stechler
+
+
+
+
+
+
+
+
+
+
+Thank you for playing!"
+horizontal_alignment = 1
+
+[node name="CreditsEnd" type="Marker2D" parent="HUD_Layer/HUD"]
+position = Vector2(583, -597)
+
+[node name="Retry" type="Button" parent="HUD_Layer/HUD"]
+visible = false
+z_index = 5
+layout_mode = 0
+offset_left = 822.0
+offset_top = 421.0
+offset_right = 872.0
+offset_bottom = 452.0
+text = "Retry"
+
+[node name="Quit" type="Button" parent="HUD_Layer/HUD"]
+visible = false
+z_index = 5
+layout_mode = 0
+offset_left = 896.0
+offset_top = 420.0
+offset_right = 938.0
+offset_bottom = 451.0
+text = "Quit"
+
 [node name="InventoryContainer" type="HBoxContainer" parent="HUD_Layer/HUD"]
 layout_mode = 1
 anchors_preset = 5
@@ -1056,6 +1141,13 @@ sprite_frames = SubResource("SpriteFrames_axeuq")
 animation = &"golden"
 
 [node name="Blackout" type="ColorRect" parent="HUD_Layer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="GameOverBlackout" type="ColorRect" parent="HUD_Layer"]
+z_index = 1
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2

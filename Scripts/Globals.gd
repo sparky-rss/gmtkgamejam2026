@@ -47,7 +47,7 @@ var SpeedMaxLevel : int = 3
 
 const HibernationCost : int = 200
 
-var banked_acorns : int = 0
+var banked_acorns : int = 990
 const tile_size : Vector2 = Vector2(32,32)
 var new_game : bool = true
 const days_until_winter : int = 10

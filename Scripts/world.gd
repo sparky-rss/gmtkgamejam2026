@@ -192,6 +192,17 @@ func eat():
 func celebrate():
 	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("joy", 1.0)
 	
+func sleep():
+	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("sleep", 1.0)
+	await get_tree().create_timer(0.2).timeout
+	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("sleep", 0.8)
+	await get_tree().create_timer(0.2).timeout
+	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("sleep", 0.6)
+	await get_tree().create_timer(0.2).timeout
+	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("sleep", 0.4)
+	await get_tree().create_timer(0.2).timeout
+	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("sleep", 0.2)
+	
 func idle():
 	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("idle", 1.0)
 	
@@ -320,9 +331,43 @@ func button_pause_toggle(toggle: bool):
 	get_node("HUD_Layer/HUD/Shop/GridContainer/Jump").disabled = toggle
 	
 func _on_hibernate_pressed() -> void:
-	pass # Replace with win game
-
-
+	if !pause:
+		pause = true
+		button_pause_toggle(true)
+		eat()
+		await get_tree().create_timer(1).timeout
+		sleep()
+		await get_tree().create_timer(1).timeout
+		Globals.banked_acorns -= Globals.HibernationCost
+		get_node("HUD_Layer/HUD/Cache").update_cache()
+		blackout_tween = create_tween()
+		blackout_tween.tween_property($HUD_Layer/GameOverBlackout, "color:a", 0.2, 0.01)
+		await get_tree().create_timer(0.2).timeout
+		blackout_tween = create_tween()
+		blackout_tween.tween_property($HUD_Layer/GameOverBlackout, "color:a", 0.4, 0.01)
+		await get_tree().create_timer(0.2).timeout
+		blackout_tween = create_tween()
+		blackout_tween.tween_property($HUD_Layer/GameOverBlackout, "color:a", 0.6, 0.01)
+		await get_tree().create_timer(0.2).timeout
+		blackout_tween = create_tween()
+		blackout_tween.tween_property($HUD_Layer/GameOverBlackout, "color:a", 0.8, 0.01)
+		await get_tree().create_timer(0.2).timeout
+		blackout_tween = create_tween()
+		blackout_tween.tween_property($HUD_Layer/GameOverBlackout, "color:a", 1, 0.01)
+		await get_tree().create_timer(0.2).timeout
+		$HUD_Layer/HUD/Credits.global_position = $HUD_Layer/HUD/CreditsStart.global_position
+		var credits_mover : Tween
+		credits_mover = create_tween()
+		credits_mover.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+		credits_mover.tween_property($HUD_Layer/HUD/Credits, "global_position", $HUD_Layer/HUD/CreditsEnd.global_position, 30).set_trans(Tween.TRANS_LINEAR)
+		await get_tree().create_timer(31).timeout
+		$HUD_Layer/HUD/Credits.text += str("\n\nYou hibernated with ", Globals.remaining_days, " days remaining.")
+		await get_tree().create_timer(2).timeout
+		$HUD_Layer/HUD/Credits.text += str("\n\nYou ended the game with ", Globals.banked_acorns, " excess acorns.")
+		await get_tree().create_timer(2).timeout
+		$HUD_Layer/HUD/Retry.show()
+		$HUD_Layer/HUD/Quit.show()
+		
 func _on_continue_pressed() -> void:
 	setup_new_day()
 
