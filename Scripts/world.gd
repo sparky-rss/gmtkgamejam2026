@@ -163,6 +163,10 @@ func disable_relevant_buttons():
 	if !disable_run_home_upgrade:
 		disable_run_home_upgrade = Globals.banked_acorns < Globals.RunHomeCostArray[Globals.RunHomeLevel]
 	get_node("HUD_Layer/HUD/Shop/GridContainer/RunHome").disabled = disable_run_home_upgrade
+	var disable_jump_upgrade = Globals.JumpLevel == Globals.JumpMaxLevel
+	if !disable_jump_upgrade:
+		disable_jump_upgrade = Globals.banked_acorns < Globals.JumpCostArray[Globals.JumpLevel]
+	get_node("HUD_Layer/HUD/Shop/GridContainer/Jump").disabled = disable_jump_upgrade
 	var disable_hibernate_upgrade = Globals.banked_acorns < Globals.HibernationCost
 	get_node("HUD_Layer/HUD/Shop/GridContainer/Hibernate").disabled = disable_hibernate_upgrade	
 	
@@ -286,6 +290,25 @@ func _on_run_home_pressed() -> void:
 		disable_relevant_buttons()
 		pause = false
 		
+func _on_jump_pressed() -> void:
+	if !pause:
+		pause = true
+		button_pause_toggle(true)
+		eat()
+		await get_tree().create_timer(1).timeout
+		celebrate()
+		await get_tree().create_timer(1).timeout
+		idle()
+		Globals.banked_acorns -= Globals.JumpCostArray[Globals.JumpLevel]
+		Globals.JumpLevel += 1
+		Globals.jump_power = true
+		get_node("HUD_Layer/HUD/Cache").update_cache()
+		get_node("HUD_Layer/HUD/Shop/GridContainer/JumpCost").text = str(Globals.JumpCostArray[Globals.JumpLevel])
+		button_pause_toggle(false)
+		disable_relevant_buttons()
+		pause = false
+	
+		
 func button_pause_toggle(toggle: bool):
 	get_node("HUD_Layer/HUD/Shop/Continue").disabled = toggle
 	get_node("HUD_Layer/HUD/Shop/GridContainer/MouthCapacity").disabled = toggle
@@ -294,6 +317,7 @@ func button_pause_toggle(toggle: bool):
 	get_node("HUD_Layer/HUD/Shop/GridContainer/Speed").disabled = toggle
 	get_node("HUD_Layer/HUD/Shop/GridContainer/Hibernate").disabled = toggle
 	get_node("HUD_Layer/HUD/Shop/GridContainer/RunHome").disabled = toggle
+	get_node("HUD_Layer/HUD/Shop/GridContainer/Jump").disabled = toggle
 	
 func _on_hibernate_pressed() -> void:
 	pass # Replace with win game

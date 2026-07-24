@@ -9,6 +9,11 @@ var mouth_inventory : Array:
 		mouth_inventory = value
 		mouth_inventory_changed.emit(mouth_inventory)
 
+var jump_power : bool = false
+var JumpLevel : int = 0
+var JumpCostArray : Array = [10, "Sold Out"]
+var JumpMaxLevel : int = 1
+
 var run_home_power : bool = false
 var RunHomeLevel : int = 0
 var RunHomeCostArray : Array = [25, "Sold Out"]
