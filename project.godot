@@ -19,6 +19,12 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 Globals="*res://Scripts/Globals.gd"
 MenuMusic="*res://Scenes/menu_music.tscn"
 
+[display]
+
+window/size/window_width_override=1152
+window/size/window_height_override=648
+window/stretch/mode="canvas_items"
+
 [gui]
 
 theme/custom_font="uid://cmjico1q7y40t"
