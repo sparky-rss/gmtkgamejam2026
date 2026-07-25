@@ -47,6 +47,7 @@ var SpeedMaxLevel : int = 3
 
 const HibernationCost : int = 150
 
+const starting_acorns : int = 0
 var banked_acorns : int = 0
 const tile_size : Vector2 = Vector2(32,32)
 var new_game : bool = true
@@ -72,4 +73,18 @@ const little_shrubs_to_generate: int = 100
 func setup():
 	remaining_days = days_until_winter
 	remaining_moves = total_moves
+	jump_power = false
+	JumpLevel = 0
+	run_home_power = false
+	RunHomeLevel = 0
+	mouth_size = 1
+	MouthCapacityLevel = 0
+	visible_radius = 2
+	VisionRadiusLevel = 0
+	total_time = 15.0
+	TimeLevel = 0
+	current_speed = 0.5
+	SpeedLevel = 0
+	banked_acorns = starting_acorns
+	end_of_day = false
 	new_game = false

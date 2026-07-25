@@ -223,13 +223,13 @@ func _on_mouth_capacity_pressed() -> void:
 		button_pause_toggle(true)
 		eat()
 		await get_tree().create_timer(1).timeout
+		Globals.banked_acorns -= Globals.MouthCapacityCostArray[Globals.MouthCapacityLevel]
+		get_node("HUD_Layer/HUD/Cache").update_cache()
 		celebrate()
 		await get_tree().create_timer(1).timeout
 		idle()
-		Globals.banked_acorns -= Globals.MouthCapacityCostArray[Globals.MouthCapacityLevel]
 		Globals.MouthCapacityLevel += 1
 		Globals.mouth_size += 1
-		get_node("HUD_Layer/HUD/Cache").update_cache()
 		get_node(str("HUD_Layer/HUD/InventoryContainer/", Globals.MouthCapacityLevel)).show()
 		get_node("HUD_Layer/HUD/Shop/GridContainer/MouthCapacityCost").text = str(Globals.MouthCapacityCostArray[Globals.MouthCapacityLevel])
 		button_pause_toggle(false)
@@ -242,14 +242,14 @@ func _on_vision_radius_pressed() -> void:
 		pause = true
 		button_pause_toggle(true)
 		eat()
+		Globals.banked_acorns -= Globals.VisionRadiusCostArray[Globals.VisionRadiusLevel]
+		get_node("HUD_Layer/HUD/Cache").update_cache()
 		await get_tree().create_timer(1).timeout
 		celebrate()
 		await get_tree().create_timer(1).timeout
 		idle()
-		Globals.banked_acorns -= Globals.VisionRadiusCostArray[Globals.VisionRadiusLevel]
 		Globals.VisionRadiusLevel += 1
 		Globals.visible_radius += 1
-		get_node("HUD_Layer/HUD/Cache").update_cache()
 		get_node("HUD_Layer/HUD/Shop/GridContainer/VisionRadiusCost").text = str(Globals.VisionRadiusCostArray[Globals.VisionRadiusLevel])
 		button_pause_toggle(false)
 		disable_relevant_buttons()
@@ -262,15 +262,15 @@ func _on_movement_pressed() -> void:
 		button_pause_toggle(true)
 		eat()
 		await get_tree().create_timer(1).timeout
+		Globals.banked_acorns -= Globals.TimeCostArray[Globals.TimeLevel]
+		get_node("HUD_Layer/HUD/Cache").update_cache()
 		celebrate()
 		await get_tree().create_timer(1).timeout
 		idle()
-		Globals.banked_acorns -= Globals.TimeCostArray[Globals.TimeLevel]
 		Globals.TimeLevel += 1
 		Globals.total_time += 4.0
 
 		get_node("HUD_Layer/HUD/Time").update_text(Globals.total_time)
-		get_node("HUD_Layer/HUD/Cache").update_cache()
 		get_node("HUD_Layer/HUD/Shop/GridContainer/MovementCost").text = str(Globals.TimeCostArray[Globals.TimeLevel])
 		button_pause_toggle(false)
 		disable_relevant_buttons()
@@ -282,13 +282,13 @@ func _on_speed_pressed() -> void:
 		button_pause_toggle(true)
 		eat()
 		await get_tree().create_timer(1).timeout
+		Globals.banked_acorns -= Globals.SpeedCostArray[Globals.SpeedLevel]
+		get_node("HUD_Layer/HUD/Cache").update_cache()
 		celebrate()
 		await get_tree().create_timer(1).timeout
 		idle()
-		Globals.banked_acorns -= Globals.SpeedCostArray[Globals.SpeedLevel]
 		Globals.SpeedLevel += 1
 		Globals.current_speed = Globals.SpeedAmountArray[Globals.SpeedLevel]
-		get_node("HUD_Layer/HUD/Cache").update_cache()
 		get_node("HUD_Layer/HUD/Shop/GridContainer/SpeedCost").text = str(Globals.SpeedCostArray[Globals.SpeedLevel])
 		button_pause_toggle(false)
 		disable_relevant_buttons()
@@ -300,13 +300,13 @@ func _on_run_home_pressed() -> void:
 		button_pause_toggle(true)
 		eat()
 		await get_tree().create_timer(1).timeout
+		Globals.banked_acorns -= Globals.RunHomeCostArray[Globals.RunHomeLevel]
+		get_node("HUD_Layer/HUD/Cache").update_cache()
 		celebrate()
 		await get_tree().create_timer(1).timeout
 		idle()
-		Globals.banked_acorns -= Globals.RunHomeCostArray[Globals.RunHomeLevel]
 		Globals.RunHomeLevel += 1
 		Globals.run_home_power = true
-		get_node("HUD_Layer/HUD/Cache").update_cache()
 		get_node("HUD_Layer/HUD/Shop/GridContainer/RunHomeCost").text = str(Globals.RunHomeCostArray[Globals.RunHomeLevel])
 		button_pause_toggle(false)
 		disable_relevant_buttons()
@@ -318,13 +318,13 @@ func _on_jump_pressed() -> void:
 		button_pause_toggle(true)
 		eat()
 		await get_tree().create_timer(1).timeout
+		Globals.banked_acorns -= Globals.JumpCostArray[Globals.JumpLevel]
+		get_node("HUD_Layer/HUD/Cache").update_cache()
 		celebrate()
 		await get_tree().create_timer(1).timeout
 		idle()
-		Globals.banked_acorns -= Globals.JumpCostArray[Globals.JumpLevel]
 		Globals.JumpLevel += 1
 		Globals.jump_power = true
-		get_node("HUD_Layer/HUD/Cache").update_cache()
 		get_node("HUD_Layer/HUD/Shop/GridContainer/JumpCost").text = str(Globals.JumpCostArray[Globals.JumpLevel])
 		button_pause_toggle(false)
 		disable_relevant_buttons()
@@ -388,11 +388,11 @@ func _on_hibernate_pressed() -> void:
 		button_pause_toggle(true)
 		eat()
 		await get_tree().create_timer(1).timeout
+		Globals.banked_acorns -= Globals.HibernationCost
+		get_node("HUD_Layer/HUD/Cache").update_cache()
 		sleep()
 		await get_tree().create_timer(1).timeout
 		$MainTheme.stop()
-		Globals.banked_acorns -= Globals.HibernationCost
-		get_node("HUD_Layer/HUD/Cache").update_cache()
 		blackout_tween = create_tween()
 		blackout_tween.tween_property($HUD_Layer/GameOverBlackout, "color:a", 0.2, 0.01)
 		await get_tree().create_timer(0.2).timeout
@@ -408,6 +408,7 @@ func _on_hibernate_pressed() -> void:
 		blackout_tween = create_tween()
 		blackout_tween.tween_property($HUD_Layer/GameOverBlackout, "color:a", 1, 0.01)
 		await get_tree().create_timer(0.2).timeout
+		get_node("HUD_Layer/HUD/Shop").hide()
 		$HUD_Layer/HUD/Credits.global_position = $HUD_Layer/HUD/CreditsStart.global_position
 		$VictoryLullaby.play()
 		var credits_mover : Tween
@@ -452,6 +453,7 @@ func _on_day_timer_timeout() -> void:
 
 
 func _on_retry_pressed() -> void:
+	Globals.new_game = true
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 
