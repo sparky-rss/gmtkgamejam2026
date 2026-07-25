@@ -188,6 +188,7 @@ func _on_den_body_entered(_body: Node2D) -> void:
 				Globals.banked_acorns += 3
 			elif i == "golden":
 				Globals.banked_acorns += 5
+			Globals.perfect_score -= 1
 		$HUD_Layer/HUD/Cache.update_cache()
 		Globals.mouth_inventory = []
 		$Drop_Off.play()
@@ -408,7 +409,7 @@ func _on_hibernate_pressed() -> void:
 		blackout_tween = create_tween()
 		blackout_tween.tween_property($HUD_Layer/GameOverBlackout, "color:a", 1, 0.01)
 		await get_tree().create_timer(0.2).timeout
-		get_node("HUD_Layer/HUD/Shop").hide()
+		get_node("HUD_Layer/HUD/Shop/GridContainer").hide()
 		$HUD_Layer/HUD/Credits.global_position = $HUD_Layer/HUD/CreditsStart.global_position
 		$VictoryLullaby.play()
 		var credits_mover : Tween
@@ -416,10 +417,15 @@ func _on_hibernate_pressed() -> void:
 		credits_mover.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		credits_mover.tween_property($HUD_Layer/HUD/Credits, "global_position", $HUD_Layer/HUD/CreditsEnd.global_position, 30).set_trans(Tween.TRANS_LINEAR)
 		await get_tree().create_timer(31).timeout
-		$HUD_Layer/HUD/Credits.text += str("\n\nYou hibernated with ", Globals.remaining_days, " days remaining.")
+		$HUD_Layer/HUD/Credits.text += str("\n\nYou hibernated with ", Globals.remaining_days - 1, " days remaining.")
 		await get_tree().create_timer(2).timeout
 		$HUD_Layer/HUD/Credits.text += str("\n\nYou ended the game with ", Globals.banked_acorns, " excess acorns.")
 		await get_tree().create_timer(2).timeout
+		if Globals.perfect_score <= 0:
+			$HUD_Layer/HUD/Perfect.show()
+			$HUD_Layer/HUD/Perfect/AnimatedSprite2D.play("default")
+			$HUD_Layer/HUD/Perfect/AnimatedSprite2D2.play("default")
+			celebrate()
 		$HUD_Layer/HUD/Retry.show()
 		$HUD_Layer/HUD/Quit.show()
 		

@@ -26,7 +26,7 @@ var MouthCapacityMaxLevel : int = 4
 
 var visible_radius : int = 2
 var VisionRadiusLevel : int = 0
-var VisionRadiusCostArray : Array = [5, 25, "Sold Out"]
+var VisionRadiusCostArray : Array = [5, 15, "Sold Out"]
 var VisionRadiusMaxLevel : int = 2
 
 var total_moves : int = 16
@@ -36,14 +36,14 @@ var MovementMaxLevel : int = 9
 
 var total_time : float = 15.0
 var TimeLevel : int = 0
-var TimeCostArray : Array = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4, 6, 8, 10, "Sold Out"]
+var TimeCostArray : Array = [2, 2, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 10, "Sold Out"]
 var TimeMaxLevel : int = 15
 
 var current_speed : float = 0.5
 var SpeedLevel : int = 0
-var SpeedCostArray : Array = [5, 10, 25, "Sold Out"]
-var SpeedAmountArray : Array = [0.5, 0.45, 0.4, 0.35]
-var SpeedMaxLevel : int = 3
+var SpeedCostArray : Array = [5, 8, 12, 20, "Sold Out"]
+var SpeedAmountArray : Array = [0.5, 0.45, 0.4, 0.35, 0.3]
+var SpeedMaxLevel : int = 4
 
 const HibernationCost : int = 150
 
@@ -66,6 +66,7 @@ const bottom_right_corner : Vector2i = Vector2i(19, 11)
 const acorn_count : int = 200
 const silver_acorn_count : int = 41
 const golden_acorn_count : int = 21
+var perfect_score : int = 262
 
 const big_trees_to_generate: int = 16
 const little_shrubs_to_generate: int = 100
@@ -85,6 +86,7 @@ func setup():
 	TimeLevel = 0
 	current_speed = 0.5
 	SpeedLevel = 0
+	perfect_score = 262
 	banked_acorns = starting_acorns
 	end_of_day = false
 	new_game = false
