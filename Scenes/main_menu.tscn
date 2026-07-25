@@ -27,6 +27,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 49
 text = "10 Days 'til Winter"
+horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Label"]
 layout_mode = 1

@@ -812,10 +812,10 @@ script = ExtResource("5_1cojt")
 [node name="Shop" type="GridContainer" parent="HUD_Layer/HUD"]
 visible = false
 layout_mode = 0
-offset_left = 445.0
+offset_left = 409.0
 offset_top = 165.0
-offset_right = 675.0
-offset_bottom = 427.0
+offset_right = 711.0
+offset_bottom = 559.0
 
 [node name="ColorRect" type="ColorRect" parent="HUD_Layer/HUD/Shop"]
 custom_minimum_size = Vector2(40, 60)
@@ -826,7 +826,7 @@ color = Color(0, 0, 0, 1)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD_Layer/HUD/Shop/ColorRect"]
 z_index = 5
 texture_filter = 1
-position = Vector2(134, 11)
+position = Vector2(159, 11)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_uqdn7")
 animation = &"sleep"
@@ -834,6 +834,7 @@ speed_scale = 2.0
 
 [node name="Label" type="Label" parent="HUD_Layer/HUD/Shop"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 21
 text = "Eat acorns to grow stronger!"
 horizontal_alignment = 1
 
@@ -844,6 +845,7 @@ columns = 3
 [node name="MouthCapacity" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 tooltip_text = "Gain an additional slot in which to carry acorns."
+theme_override_font_sizes/font_size = 21
 text = "Mouth Capacity +1
 "
 icon_alignment = 2
@@ -851,6 +853,7 @@ icon_alignment = 2
 [node name="MouthCapacityCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 21
 text = "2"
 horizontal_alignment = 2
 
@@ -866,6 +869,7 @@ texture = ExtResource("7_pt3ps")
 [node name="VisionRadius" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 tooltip_text = "Reveal one tile further while moving around the map."
+theme_override_font_sizes/font_size = 21
 text = "Vision Radius +1
 "
 icon_alignment = 2
@@ -873,6 +877,7 @@ icon_alignment = 2
 [node name="VisionRadiusCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 21
 text = "5"
 horizontal_alignment = 2
 
@@ -888,6 +893,7 @@ texture = ExtResource("7_pt3ps")
 [node name="Movement" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 tooltip_text = "Adds 4 more seconds to the collection timer each day."
+theme_override_font_sizes/font_size = 21
 text = "Daily Time +4s
 "
 icon_alignment = 2
@@ -895,6 +901,7 @@ icon_alignment = 2
 [node name="MovementCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 21
 text = "2"
 horizontal_alignment = 2
 
@@ -910,6 +917,7 @@ texture = ExtResource("7_pt3ps")
 [node name="Speed" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 tooltip_text = "Increases your movement speed by 0.05s per tile."
+theme_override_font_sizes/font_size = 21
 text = "Movement Speed+
 "
 icon_alignment = 2
@@ -917,6 +925,7 @@ icon_alignment = 2
 [node name="SpeedCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 21
 text = "5"
 horizontal_alignment = 2
 
@@ -932,6 +941,7 @@ texture = ExtResource("7_pt3ps")
 [node name="RunHome" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 tooltip_text = "Gain the 'Return' ability. (Press Space to travel  straight back to your den.)"
+theme_override_font_sizes/font_size = 21
 text = "Gain 'Return' (Space)
 "
 icon_alignment = 2
@@ -939,6 +949,7 @@ icon_alignment = 2
 [node name="RunHomeCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 21
 text = "25"
 horizontal_alignment = 2
 
@@ -954,6 +965,7 @@ texture = ExtResource("7_pt3ps")
 [node name="Jump" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 tooltip_text = "Gain the 'Jump' ability. (Move into 1x1 obstacles to jump over them.)"
+theme_override_font_sizes/font_size = 21
 text = "Gain 'Jump'
 "
 icon_alignment = 2
@@ -961,6 +973,7 @@ icon_alignment = 2
 [node name="JumpCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 21
 text = "10"
 horizontal_alignment = 2
 
@@ -976,6 +989,7 @@ texture = ExtResource("7_pt3ps")
 [node name="Hibernate" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 tooltip_text = "Sleep for the winter, and win the game!"
+theme_override_font_sizes/font_size = 21
 text = "Hibernate
 "
 icon_alignment = 2
@@ -983,6 +997,7 @@ icon_alignment = 2
 [node name="HibernateCost" type="Label" parent="HUD_Layer/HUD/Shop/GridContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 21
 text = "200"
 horizontal_alignment = 2
 
@@ -997,6 +1012,7 @@ texture = ExtResource("7_pt3ps")
 
 [node name="Continue" type="Button" parent="HUD_Layer/HUD/Shop"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 21
 text = "Continue to Next Day
 "
 icon_alignment = 2
@@ -1014,11 +1030,12 @@ position = Vector2(583, 771)
 visible = false
 z_index = 5
 layout_mode = 0
-offset_left = 822.0
+offset_left = 748.0
 offset_top = 180.0
-offset_right = 934.0
-offset_bottom = 203.0
+offset_right = 860.0
+offset_bottom = 208.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
 text = "Game Over!"
 
 [node name="Credits" type="Label" parent="HUD_Layer/HUD"]
@@ -1289,6 +1306,8 @@ one_shot = true
 
 [node name="DummyAim" type="Marker2D" parent="."]
 position = Vector2(-480.86978, -200.52544)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/MouthCapacity" to="." method="_on_mouth_capacity_pressed"]
 [connection signal="pressed" from="HUD_Layer/HUD/Shop/GridContainer/VisionRadius" to="." method="_on_vision_radius_pressed"]

@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 
 Globals="*res://Scripts/Globals.gd"
 
+[gui]
+
+theme/custom_font="uid://cmjico1q7y40t"
+
 [input]
 
 move_down={
