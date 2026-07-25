@@ -47,7 +47,7 @@ var SpeedMaxLevel : int = 3
 
 const HibernationCost : int = 200
 
-var banked_acorns : int = 990
+var banked_acorns : int = 0
 const tile_size : Vector2 = Vector2(32,32)
 var new_game : bool = true
 const days_until_winter : int = 10
@@ -63,8 +63,8 @@ const top_left_corner : Vector2i = Vector2i(-19, -11)
 const bottom_right_corner : Vector2i = Vector2i(19, 11)
 
 const acorn_count : int = 200
-const silver_acorn_count : int = 30
-const golden_acorn_count : int = 15
+const silver_acorn_count : int = 41
+const golden_acorn_count : int = 21
 
 const big_trees_to_generate: int = 16
 const little_shrubs_to_generate: int = 100

@@ -74,7 +74,10 @@ func generate_trees():
 	for shrub in Globals.little_shrubs_to_generate:
 		if $TreeLayer.get_cell_tile_data(shuffled_atlas[shrub]) == null:
 			var shrub_to_use = randi_range(2, 9)
-			$TreeLayer.set_cell(shuffled_atlas[shrub], shrub_to_use, (Vector2i(0, 0)))
+			if (abs(shuffled_atlas[shrub].x) <=2 and abs(shuffled_atlas[shrub].y) <=2):
+				pass
+			else:
+				$TreeLayer.set_cell(shuffled_atlas[shrub], shrub_to_use, (Vector2i(0, 0)))
 
 func spread_acorns():
 	var open_spots : Array = Globals.playable_area.duplicate()
@@ -122,20 +125,20 @@ func set_player_view():
 func setup_new_day():
 	Globals.remaining_moves = Globals.total_moves
 	Globals.remaining_days -= 1
-	if Globals.remaining_days < 0:
-		pass #eventually game over here
+	if Globals.remaining_days == 0:
+		game_over()
 	else:
 		$HUD_Layer/HUD/Days.update_days()
 		$HUD_Layer/HUD/Moves.update_moves()
-	get_node("HUD_Layer/HUD/Shop").hide()
-	$CharacterBody2D/PlayerSprite.idle()
-	blackout_tween = create_tween()
-	blackout_tween.tween_property($HUD_Layer/Blackout, "color:a", 0.0, 2.0)
-	get_node("HUD_Layer/HUD/Time").update_text(Globals.total_time)
-	await get_tree().create_timer(2.2).timeout
-	Globals.end_of_day = false
-	await get_tree().create_timer(1).timeout
-	get_node("DayTimer").start(Globals.total_time)
+		get_node("HUD_Layer/HUD/Shop").hide()
+		$CharacterBody2D/PlayerSprite.idle()
+		blackout_tween = create_tween()
+		blackout_tween.tween_property($HUD_Layer/Blackout, "color:a", 0.0, 2.0)
+		get_node("HUD_Layer/HUD/Time").update_text(Globals.total_time)
+		await get_tree().create_timer(2.2).timeout
+		Globals.end_of_day = false
+		await get_tree().create_timer(1).timeout
+		get_node("DayTimer").start(Globals.total_time)
 
 func pass_time():
 	set_player_view()
@@ -329,7 +332,45 @@ func button_pause_toggle(toggle: bool):
 	get_node("HUD_Layer/HUD/Shop/GridContainer/Hibernate").disabled = toggle
 	get_node("HUD_Layer/HUD/Shop/GridContainer/RunHome").disabled = toggle
 	get_node("HUD_Layer/HUD/Shop/GridContainer/Jump").disabled = toggle
+
+func game_over() -> void:
+	$HUD_Layer/HUD/Days.update_days()
+	get_node("HUD_Layer/HUD/Shop").hide()
+	$CharacterBody2D/PlayerSprite.hide()
+	$CharacterBody2D/DummySprite.show()
+	$CharacterBody2D/DummySprite.animation = "celebrate"
+	$CharacterBody2D/DummySprite.stop()
+	$CharacterBody2D/DummySprite.frame = 1
+	$HUD_Layer/HUD/Days/SnowWall.show()
+	blackout_tween = create_tween()
+	blackout_tween.tween_property($HUD_Layer/Blackout, "color:a", 0.0, 2.0)
+	get_node("HUD_Layer/HUD/Time").update_text(Globals.total_time)
+	await get_tree().create_timer(0.6).timeout
+	var movement_tween = create_tween()
+	movement_tween.tween_property($CharacterBody2D/DummySprite, "global_position", $DummyAim.global_position, 2.0)
+	$CharacterBody2D/DummySprite.spin()
+	await get_tree().create_timer(1.5).timeout
+	blackout_tween = create_tween()
+	blackout_tween.tween_property($HUD_Layer/HUD/Days/SnowWall, "color:a", 0.4, 0.01)
+	await get_tree().create_timer(0.2).timeout
+	blackout_tween = create_tween()
+	blackout_tween.tween_property($HUD_Layer/HUD/Days/SnowWall, "color:a", 0.6, 0.01)
+	await get_tree().create_timer(0.2).timeout
+	blackout_tween = create_tween()
+	blackout_tween.tween_property($HUD_Layer/HUD/Days/SnowWall, "color:a", 0.8, 0.01)
+	await get_tree().create_timer(0.2).timeout
+	blackout_tween = create_tween()
+	blackout_tween.tween_property($HUD_Layer/HUD/Days/SnowWall, "color:a", 1, 0.01)
+	await get_tree().create_timer(2).timeout
+	get_node("HUD_Layer/HUD/GameOverLabel").show()
+	await get_tree().create_timer(2).timeout
+	$HUD_Layer/HUD/GameOverLabel.text += str("\n\nYou ended the game \nwith ", Globals.banked_acorns, " banked acorns.")
+	await get_tree().create_timer(2).timeout
+	$HUD_Layer/HUD/Retry.show()
+	$HUD_Layer/HUD/Quit.show()
 	
+	
+
 func _on_hibernate_pressed() -> void:
 	if !pause:
 		pause = true
@@ -395,3 +436,11 @@ func _on_day_timer_timeout() -> void:
 	disable_relevant_buttons()
 	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("idle", 1.0)
 	get_node("HUD_Layer/HUD/Time").update_text(Globals.total_time)
+
+
+func _on_retry_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()

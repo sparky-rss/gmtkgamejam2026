@@ -3,6 +3,11 @@ extends AnimatedSprite2D
 func _ready() -> void:
 	idle()
 
+func spin():
+	for i in 10000:
+		self.rotation += 0.1
+		await get_tree().create_timer(0.01).timeout
+		
 func _process(_delta: float) -> void:
 	var idle_variant : int
 	idle_variant = randi_range(0,400)

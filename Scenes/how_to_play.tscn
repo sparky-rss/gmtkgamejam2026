@@ -1,0 +1,314 @@
+[gd_scene load_steps=32 format=3 uid="uid://cyaxgidkxbdd4"]
+
+[ext_resource type="Texture2D" uid="uid://dmixxc5t2lliq" path="res://Sprites/keys.png" id="1_7d32w"]
+[ext_resource type="Script" uid="uid://d3bg2xo7oxxur" path="res://how_to_play.gd" id="1_fvnpy"]
+[ext_resource type="Texture2D" uid="uid://c3nq7sfydhgf7" path="res://Sprites/wasd.png" id="2_i0xi1"]
+[ext_resource type="Texture2D" uid="uid://chfj5gjajkf25" path="res://Sprites/Cave3.png" id="3_sf1gv"]
+[ext_resource type="Texture2D" uid="uid://cgbwdram16x7l" path="res://Sprites/Acorns (Silver).png" id="4_fvnpy"]
+[ext_resource type="Texture2D" uid="uid://i8xiwuepxn75" path="res://Sprites/down_arrow (1).png" id="4_sf1gv"]
+[ext_resource type="Texture2D" uid="uid://xr8gcgirqc8p" path="res://Sprites/Untitled.png" id="5_fvnpy"]
+[ext_resource type="Texture2D" uid="uid://dqxd6c4q1bse2" path="res://Sprites/Acorns.png" id="5_spxys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opbav"]
+atlas = ExtResource("4_sf1gv")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5wkl"]
+atlas = ExtResource("4_sf1gv")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r74th"]
+atlas = ExtResource("4_sf1gv")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04jkj"]
+atlas = ExtResource("4_sf1gv")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_spxys"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opbav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5wkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r74th")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04jkj")
+}],
+"loop": true,
+"name": &"play",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27c06"]
+atlas = ExtResource("4_fvnpy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wkvt"]
+atlas = ExtResource("4_fvnpy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk1tp"]
+atlas = ExtResource("4_fvnpy")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2klxv"]
+atlas = ExtResource("4_fvnpy")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c255"]
+atlas = ExtResource("4_fvnpy")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8x83"]
+atlas = ExtResource("4_fvnpy")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35c8b"]
+atlas = ExtResource("4_fvnpy")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3gpe"]
+atlas = ExtResource("4_fvnpy")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipq1q"]
+atlas = ExtResource("4_fvnpy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le56s"]
+atlas = ExtResource("5_spxys")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yn3c2"]
+atlas = ExtResource("5_spxys")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw3jm"]
+atlas = ExtResource("5_spxys")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikvrm"]
+atlas = ExtResource("5_spxys")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4xtn"]
+atlas = ExtResource("5_spxys")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uh23"]
+atlas = ExtResource("5_spxys")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uak87"]
+atlas = ExtResource("5_spxys")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fir4u"]
+atlas = ExtResource("5_spxys")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a3t8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27c06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wkvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk1tp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2klxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c255")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8x83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35c8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3gpe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipq1q")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_le56s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yn3c2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw3jm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikvrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4xtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uh23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uak87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fir4u")
+}],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 5.0
+}]
+
+[node name="howtoplay" type="Node2D"]
+script = ExtResource("1_fvnpy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1161.0
+offset_bottom = 651.0
+color = Color(0.39904684, 0.24831423, 0.13483071, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -230.0
+offset_right = -148.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "
+Move:
+
+
+Collect:
+
+
+Return:
+
+
+Win:"
+horizontal_alignment = 2
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Label"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = 100.0
+offset_right = 52.0
+offset_bottom = 201.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="arrows" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(651.2, 129.2)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_7d32w")
+
+[node name="wasd" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(517.2, 131.2)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_i0xi1")
+
+[node name="cave" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(494, 327)
+scale = Vector2(2, 2)
+texture = ExtResource("3_sf1gv")
+
+[node name="Return" type="AnimatedSprite2D" parent="CanvasLayer/cave"]
+position = Vector2(0, -17)
+sprite_frames = SubResource("SpriteFrames_spxys")
+animation = &"play"
+frame_progress = 0.37956992
+speed_scale = 2.0
+
+[node name="win" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(589, 416)
+texture = ExtResource("5_fvnpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(486, 231)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_a3t8s")
+animation = &"new_animation"
+frame_progress = 0.89538914
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(549, 232)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_a3t8s")
+frame_progress = 0.47027743
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(610, 232)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_a3t8s")
+animation = &"new_animation_1"
+frame_progress = 0.6438486
+
+[node name="HowToPlay" type="Button" parent="CanvasLayer"]
+offset_left = 587.0
+offset_top = 530.0
+offset_right = 632.0
+offset_bottom = 561.0
+text = "Back
+"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 561.0
+offset_top = 224.0
+offset_right = 601.0
+offset_bottom = 247.0
+text = "x3"
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 500.0
+offset_top = 224.0
+offset_right = 540.0
+offset_bottom = 247.0
+text = "x1"
+
+[node name="Label4" type="Label" parent="CanvasLayer"]
+offset_left = 623.0
+offset_top = 224.0
+offset_right = 663.0
+offset_bottom = 247.0
+text = "x5"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[connection signal="pressed" from="CanvasLayer/HowToPlay" to="." method="_on_how_to_play_pressed"]

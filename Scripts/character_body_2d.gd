@@ -8,6 +8,7 @@ func _ready() -> void:
 	var map_pos = get_parent().get_node("TileMapLayer").map_position(global_position + (Globals.tile_size/2))
 	Globals.map_position = map_pos + Vector2i(-1,0)
 
+
 func _physics_process(_delta: float) -> void:
 	if (!sprite_node_pos_tween or !sprite_node_pos_tween.is_running()) and !Globals.end_of_day:
 		if Input.is_action_pressed("move_up") and !$up.is_colliding():
