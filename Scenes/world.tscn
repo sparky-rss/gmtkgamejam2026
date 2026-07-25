@@ -1931,17 +1931,17 @@ bus = &"Sfx"
 
 [node name="GameOverSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("35_coyub")
-volume_db = -17.174
+volume_db = -13.357
 bus = &"Music"
 
 [node name="VictoryLullaby" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("36_p5wkl")
-volume_db = -17.174
+volume_db = -13.357
 bus = &"Music"
 
 [node name="MainTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("37_r74th")
-volume_db = -17.174
+volume_db = -12.403
 bus = &"Music"
 parameters/looping = true
 

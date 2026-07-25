@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Epic.mp3-7a0b6c83d2a5929916fee3eadd9deb35.mp3
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
