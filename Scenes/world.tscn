@@ -932,7 +932,7 @@ texture = ExtResource("7_pt3ps")
 [node name="RunHome" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 tooltip_text = "Gain the 'Return' ability. (Press Space to travel  straight back to your den.)"
-text = "Gain 'Return'
+text = "Gain 'Return' (Space)
 "
 icon_alignment = 2
 
