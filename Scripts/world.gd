@@ -5,6 +5,8 @@ var pause : bool
 const acorn_scene = preload("res://Scenes/acorn.tscn")
 
 func _ready() -> void:
+	MenuMusic.get_node("Menu").stop()
+	$MainTheme.play()
 	if Globals.new_game:
 		Globals.setup()
 		setup_first_day()
@@ -188,12 +190,18 @@ func _on_den_body_entered(_body: Node2D) -> void:
 				Globals.banked_acorns += 5
 		$HUD_Layer/HUD/Cache.update_cache()
 		Globals.mouth_inventory = []
+		$Drop_Off.play()
 
 func eat():
 	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("eat", 1.0)
+	get_node("Eat").play()
 	
 func celebrate():
 	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("joy", 1.0)
+	await get_tree().create_timer(0.2).timeout
+	get_node("Jump").play()
+	await get_tree().create_timer(0.3).timeout
+	get_node("Jump").play()
 	
 func sleep():
 	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("sleep", 1.0)
@@ -348,6 +356,7 @@ func game_over() -> void:
 	await get_tree().create_timer(0.6).timeout
 	var movement_tween = create_tween()
 	movement_tween.tween_property($CharacterBody2D/DummySprite, "global_position", $DummyAim.global_position, 2.0)
+	$Punt.play()
 	$CharacterBody2D/DummySprite.spin()
 	await get_tree().create_timer(1.5).timeout
 	blackout_tween = create_tween()
@@ -361,6 +370,8 @@ func game_over() -> void:
 	await get_tree().create_timer(0.2).timeout
 	blackout_tween = create_tween()
 	blackout_tween.tween_property($HUD_Layer/HUD/Days/SnowWall, "color:a", 1, 0.01)
+	$MainTheme.stop()
+	$GameOverSong.play()
 	await get_tree().create_timer(2).timeout
 	get_node("HUD_Layer/HUD/GameOverLabel").show()
 	await get_tree().create_timer(2).timeout
@@ -379,6 +390,7 @@ func _on_hibernate_pressed() -> void:
 		await get_tree().create_timer(1).timeout
 		sleep()
 		await get_tree().create_timer(1).timeout
+		$MainTheme.stop()
 		Globals.banked_acorns -= Globals.HibernationCost
 		get_node("HUD_Layer/HUD/Cache").update_cache()
 		blackout_tween = create_tween()
@@ -397,6 +409,7 @@ func _on_hibernate_pressed() -> void:
 		blackout_tween.tween_property($HUD_Layer/GameOverBlackout, "color:a", 1, 0.01)
 		await get_tree().create_timer(0.2).timeout
 		$HUD_Layer/HUD/Credits.global_position = $HUD_Layer/HUD/CreditsStart.global_position
+		$VictoryLullaby.play()
 		var credits_mover : Tween
 		credits_mover = create_tween()
 		credits_mover.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)

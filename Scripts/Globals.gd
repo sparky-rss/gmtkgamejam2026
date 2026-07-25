@@ -45,7 +45,7 @@ var SpeedCostArray : Array = [5, 10, 25, "Sold Out"]
 var SpeedAmountArray : Array = [0.5, 0.45, 0.4, 0.35]
 var SpeedMaxLevel : int = 3
 
-const HibernationCost : int = 200
+const HibernationCost : int = 150
 
 var banked_acorns : int = 0
 const tile_size : Vector2 = Vector2(32,32)

@@ -67,6 +67,7 @@ func _jump(dir: Vector2):
 		sprite_node_pos_tween.kill()
 	if sprite_node_scale_tween:
 		sprite_node_scale_tween.kill()
+	$"../Jump".play()
 	sprite_node_pos_tween = create_tween()
 	sprite_node_pos_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	sprite_node_pos_tween.tween_property($PlayerSprite, "global_position", global_position, Globals.current_speed).set_trans(Tween.TRANS_SINE)
@@ -81,6 +82,7 @@ func _move_to_den(den_pos: Vector2):
 	$PlayerSprite.global_position = previous_position
 	if $PlayerSprite.global_position != global_position:
 		$PlayerSprite.run()	
+		$"../Run".play()
 	if global_position.x < $PlayerSprite.global_position.x:
 		$PlayerSprite.face("left")
 	elif global_position.x > $PlayerSprite.global_position.x:
@@ -92,3 +94,4 @@ func _move_to_den(den_pos: Vector2):
 	sprite_node_pos_tween.tween_property($PlayerSprite, "global_position", global_position, 1.5).set_trans(Tween.TRANS_LINEAR)
 	await get_tree().create_timer(1.3).timeout
 	Globals.running_home = false
+	$"../Run".stop()

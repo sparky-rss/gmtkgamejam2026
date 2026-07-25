@@ -11,6 +11,7 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 		Globals.mouth_inventory = new_array.duplicate()
 		self.hide()
 		active = false
+		get_parent().get_node("Collect").play()
 	elif state == "silver" and self.visible and active:
 		for i in Globals.mouth_inventory.size():
 			if Globals.mouth_inventory[i] == "normal":
@@ -20,6 +21,7 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 				Globals.mouth_inventory = new_array.duplicate()
 				get_node("AnimatedSprite2D").play("normal")
 				state = "normal"
+				get_parent().get_node("Collect").play()
 				return
 	elif state == "golden" and self.visible and active:
 		for i in Globals.mouth_inventory.size():
@@ -30,6 +32,7 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 				Globals.mouth_inventory = new_array.duplicate()
 				get_node("AnimatedSprite2D").play("normal")
 				state = "normal"
+				get_parent().get_node("Collect").play()
 				return								
 		for i in Globals.mouth_inventory.size():
 			if Globals.mouth_inventory[i] == "silver":
@@ -39,4 +42,5 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 				Globals.mouth_inventory = new_array.duplicate()
 				get_node("AnimatedSprite2D").play("silver")
 				state = "silver"
+				get_parent().get_node("Collect").play()
 				return								
