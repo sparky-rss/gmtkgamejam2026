@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cyaxgidkxbdd4"]
+[gd_scene load_steps=31 format=3 uid="uid://cyaxgidkxbdd4"]
 
 [ext_resource type="Texture2D" uid="uid://dmixxc5t2lliq" path="res://Sprites/keys.png" id="1_7d32w"]
 [ext_resource type="Script" uid="uid://d3bg2xo7oxxur" path="res://Scripts/how_to_play.gd" id="1_fvnpy"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://chfj5gjajkf25" path="res://Sprites/Cave3.png" id="3_sf1gv"]
 [ext_resource type="Texture2D" uid="uid://cgbwdram16x7l" path="res://Sprites/Acorns (Silver).png" id="4_fvnpy"]
 [ext_resource type="Texture2D" uid="uid://i8xiwuepxn75" path="res://Sprites/down_arrow (1).png" id="4_sf1gv"]
-[ext_resource type="Texture2D" uid="uid://xr8gcgirqc8p" path="res://Sprites/Untitled.png" id="5_fvnpy"]
 [ext_resource type="Texture2D" uid="uid://dqxd6c4q1bse2" path="res://Sprites/Acorns.png" id="5_spxys"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_opbav"]
@@ -255,10 +254,6 @@ animation = &"play"
 frame_progress = 0.37956992
 speed_scale = 2.0
 
-[node name="win" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(622, 382)
-texture = ExtResource("5_fvnpy")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
 position = Vector2(519, 213)
 scale = Vector2(2, 2)
@@ -307,6 +302,18 @@ offset_top = 206.0
 offset_right = 696.0
 offset_bottom = 229.0
 text = "x5"
+
+[node name="Hibernate" type="Button" parent="CanvasLayer"]
+offset_left = 492.0
+offset_top = 365.0
+offset_right = 580.0
+offset_bottom = 399.0
+tooltip_text = "Sleep for the winter, and win the game!"
+theme_override_font_sizes/font_size = 21
+disabled = true
+text = "Hibernate
+"
+icon_alignment = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=4 uid="uid://m1m6a80qsrtw"]
+[gd_scene load_steps=131 format=4 uid="uid://m1m6a80qsrtw"]
 
 [ext_resource type="Script" uid="uid://d13omtisa0lkg" path="res://Scripts/world.gd" id="1_8j60k"]
 [ext_resource type="Texture2D" uid="uid://ffdtqelogs0w" path="res://Sprites/GRASS+.png" id="1_go701"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://sly7ub8dxuqx" path="res://Scripts/player.gd" id="4_fo5ed"]
 [ext_resource type="Script" uid="uid://dmt141kdd35a1" path="res://Scripts/cache.gd" id="5_1cojt"]
 [ext_resource type="Script" uid="uid://dkar7b7xo3dgq" path="res://Scripts/tile_map_layer.gd" id="5_k7acu"]
+[ext_resource type="Texture2D" uid="uid://bhu3f2ov63f55" path="res://Sprites/snowflake.png" id="5_r74th"]
 [ext_resource type="Texture2D" uid="uid://70v528t4tdk8" path="res://Sprites/Broken_tree2.png" id="6_hgpy0"]
 [ext_resource type="Texture2D" uid="uid://u30dmcwltp5h" path="res://Sprites/Squirrel Sprite Sheet.png" id="6_i4fjy"]
 [ext_resource type="Texture2D" uid="uid://cfeap1dr0i28" path="res://Sprites/AcornIcon.png" id="7_pt3ps"]
@@ -770,35 +771,589 @@ offset_bottom = 38.0
 text = "Remaining Energy: 16"
 script = ExtResource("2_k7acu")
 
-[node name="Time" type="Label" parent="HUD_Layer/HUD"]
+[node name="Time" type="RichTextLabel" parent="HUD_Layer/HUD"]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 5.0
 offset_right = 343.0
 offset_bottom = 54.0
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
 text = "Time Remaining: 15"
+fit_content = true
+scroll_active = false
 script = ExtResource("3_hmc15")
 
-[node name="Days" type="Label" parent="HUD_Layer/HUD"]
+[node name="Days" type="RichTextLabel" parent="HUD_Layer/HUD"]
+clip_contents = false
 layout_mode = 0
 offset_left = 1240.0
 offset_top = 284.0
 offset_right = 2087.0
 offset_bottom = 402.0
-theme_override_font_sizes/font_size = 86
+theme_override_font_sizes/normal_font_size = 86
+bbcode_enabled = true
 text = "10 Days Until Winter"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 2
 script = ExtResource("3_k7acu")
 
 [node name="SnowWall" type="ColorRect" parent="HUD_Layer/HUD/Days"]
 visible = false
 z_index = 1
-layout_mode = 0
-offset_top = -338.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.72700006
+offset_top = -252.21399
 offset_right = 4837.0
 offset_bottom = 425.0
 color = Color(0.85, 0.85, 0.85, 0.45490196)
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(99, 112)
+rotation = 0.61086524
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D2" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(198, 224)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D3" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(726, 253)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D4" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(118, 621)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D5" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(600, 317.5)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D6" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(308, 533)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D7" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(401.5, 277.5)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D8" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(441, 143)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D9" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(416.5, 473)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D10" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(759, 550)
+rotation = -1.2112585
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D11" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(509, 591)
+rotation = -1.2112585
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D12" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(666, 655)
+rotation = -1.2112585
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D13" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(116, 471)
+rotation = 2.3020892
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D14" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2848, 703)
+rotation = 2.3020892
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D15" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(965, 299)
+rotation = 2.3020892
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D16" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(866, 187)
+rotation = 2.3020892
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D17" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(585, 453)
+rotation = 2.3020892
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D18" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(291.5, 695.5)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D19" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(665, 119)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D20" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(254, 102)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D21" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1045.1346, 127.13463)
+rotation = 0.61086524
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D22" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1144.1346, 239.13463)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D23" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1672.1346, 268.13464)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D24" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1064.1346, 636.13464)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D25" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1546.1346, 332.63464)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D26" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1236.9999, 458)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D27" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1347.6346, 292.63464)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D28" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1387.1346, 158.13463)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D29" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1362.6346, 488.13464)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D30" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1756.9999, 543.99994)
+rotation = -1.2112585
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D31" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1430.9999, 634.00006)
+rotation = -1.2112585
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D32" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1612.1346, 670.13464)
+rotation = -1.2112585
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D33" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1062.1346, 486.13464)
+rotation = 2.3020892
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D34" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1598.6346, 566.13464)
+rotation = 2.3020892
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D35" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1910.9999, 366)
+rotation = 2.3020892
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D36" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1812.1346, 202.13463)
+rotation = 2.3020892
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D37" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1531.1346, 468.13464)
+rotation = 2.3020892
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D38" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1237.6346, 710.63464)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D39" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1611.1346, 134.13463)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D40" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1200.1346, 117.13463)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D41" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2009.1346, 137.13463)
+rotation = 0.61086524
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D42" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2129, 329)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D43" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2636.1348, 278.13464)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D44" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2028.1346, 646.13464)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D45" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(1844, 674.00006)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D46" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2218.1348, 558.13464)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D47" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2311.6348, 302.63464)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D48" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2351.1348, 168.13463)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D49" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2326.6348, 498.13464)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D50" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2713.9998, 544)
+rotation = -1.2112585
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D51" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2419.1348, 616.13464)
+rotation = -1.2112585
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D52" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2576.1348, 680.13464)
+rotation = -1.2112585
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D53" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2026.1346, 496.13464)
+rotation = 2.3020892
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D54" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2562.6348, 576.13464)
+rotation = 2.3020892
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D55" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2885, 372.00012)
+rotation = 2.3020892
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D56" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2776.1348, 212.13463)
+rotation = 2.3020892
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D57" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2495.1348, 478.13464)
+rotation = 2.3020892
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D58" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2201.6348, 720.63464)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D59" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2575.1348, 144.13463)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D60" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(2164.1348, 127.13463)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D61" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3005.1348, 126.13463)
+rotation = 0.61086524
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D62" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3104.1348, 238.13463)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D63" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3632.1348, 267.13464)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D64" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3024.1348, 635.13464)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D65" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3506.1348, 331.63464)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D66" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3214.1348, 547.13464)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D67" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3307.6348, 291.63464)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D68" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3347.1348, 157.13463)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D69" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3322.6348, 487.13464)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D70" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3738, 564)
+rotation = -1.2112585
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D71" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3415.1348, 605.13464)
+rotation = -1.2112585
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D72" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3572.1348, 669.13464)
+rotation = -1.2112585
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D73" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3022.1348, 485.13464)
+rotation = 2.3020892
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D74" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3558.6348, 565.13464)
+rotation = 2.3020892
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D75" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3871.1348, 313.13464)
+rotation = 2.3020892
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D76" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3772.1348, 201.13463)
+rotation = 2.3020892
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D77" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3491.1348, 467.13464)
+rotation = 2.3020892
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D78" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3197.6348, 709.63464)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D79" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3571.1348, 133.13463)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D80" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3160.1348, 116.13463)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D81" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3969.1348, 115.13463)
+rotation = 0.61086524
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D82" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4068.1348, 227.13463)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D83" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4596.135, 256.13464)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D84" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3988.1348, 624.13464)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D85" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4470.135, 320.63464)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D86" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4178.135, 536.13464)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D87" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4271.635, 280.63464)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D88" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4311.135, 146.13463)
+rotation = 0.1308997
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D89" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4286.635, 476.13464)
+rotation = 0.61086524
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D90" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4629.135, 553.13464)
+rotation = -1.2112585
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D91" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4379.135, 594.13464)
+rotation = -1.2112585
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D92" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4536.135, 658.13464)
+rotation = -1.2112585
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D93" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(3986.1348, 474.13464)
+rotation = 2.3020892
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D94" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4522.635, 554.13464)
+rotation = 2.3020892
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D95" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(882, 674.99963)
+rotation = 2.3020892
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D96" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4736.135, 190.13463)
+rotation = 2.3020892
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D97" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4455.135, 456.13464)
+rotation = 2.3020892
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D98" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4161.635, 698.63464)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D99" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4535.135, 122.13463)
+texture = ExtResource("5_r74th")
+
+[node name="Sprite2D100" type="Sprite2D" parent="HUD_Layer/HUD/Days/SnowWall"]
+position = Vector2(4124.135, 105.13463)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r74th")
 
 [node name="Cache" type="RichTextLabel" parent="HUD_Layer/HUD"]
 layout_mode = 1
@@ -1062,24 +1617,30 @@ for GMTK Game Jam 2026
 
 Art:
 
-Squirrel Sprites by:
+Squirrel:
 Elthen
 https://elthen.itch.io/
+2d-pixel-art-squirrel-sprites
 
-Grass Sprites by:
+Grass:
 SciGho
-https://ninjikin.itch.io
+https://ninjikin.itch.io/grass
 
-Trees/Rocks by:
+Trees/Rocks:
 CraftPix
 https://craftpix.net/
 
-WASD and Arrow keys by:
+WASD and Arrow keys:
 manshagraphics
 https://www.flaticon.com/
 free-icons/wasd
 
-Acorns/Cave by:
+Snowflakes:
+mkwong98
+https://opengameart.org/
+content/snow-flake
+
+Acorns/Cave:
 Ryan Siegel-Stechler
 
 Music:
@@ -1114,16 +1675,16 @@ Thank you for playing!"
 horizontal_alignment = 1
 
 [node name="CreditsEnd" type="Marker2D" parent="HUD_Layer/HUD"]
-position = Vector2(583, -1028)
+position = Vector2(583, -1316)
 
 [node name="Retry" type="Button" parent="HUD_Layer/HUD"]
 visible = false
 z_index = 5
 layout_mode = 0
 offset_left = 779.0
-offset_top = 421.0
+offset_top = 342.0
 offset_right = 875.0
-offset_bottom = 452.0
+offset_bottom = 373.0
 text = "Main Menu"
 
 [node name="Quit" type="Button" parent="HUD_Layer/HUD"]
@@ -1131,9 +1692,9 @@ visible = false
 z_index = 5
 layout_mode = 0
 offset_left = 896.0
-offset_top = 420.0
+offset_top = 341.0
 offset_right = 938.0
-offset_bottom = 451.0
+offset_bottom = 372.0
 text = "Quit"
 
 [node name="InventoryContainer" type="HBoxContainer" parent="HUD_Layer/HUD"]
