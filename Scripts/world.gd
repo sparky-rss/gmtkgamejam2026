@@ -455,6 +455,7 @@ func _on_day_timer_timeout() -> void:
 	await get_tree().create_timer(2.2).timeout
 	get_node("HUD_Layer/HUD/Shop/Continue").update()
 	get_node("HUD_Layer/HUD/Shop").show()
+	$HUD_Layer/HUD/Shop/GridContainer/MouthCapacity.grab_focus() 
 	disable_relevant_buttons()
 	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("idle", 1.0)
 	get_node("HUD_Layer/HUD/Time").update_text(Globals.total_time)

@@ -1474,6 +1474,12 @@ columns = 3
 [node name="MouthCapacity" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 tooltip_text = "Gain an additional slot in which to carry acorns."
+focus_neighbor_left = NodePath("../../Continue")
+focus_neighbor_top = NodePath("../../Continue")
+focus_neighbor_right = NodePath("../VisionRadius")
+focus_neighbor_bottom = NodePath("../VisionRadius")
+focus_next = NodePath("../VisionRadius")
+focus_previous = NodePath("../../Continue")
 theme_override_font_sizes/font_size = 21
 text = "Mouth Capacity +1
 "
@@ -1498,6 +1504,12 @@ texture = ExtResource("7_pt3ps")
 [node name="VisionRadius" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 tooltip_text = "Reveal one tile further while moving around the map."
+focus_neighbor_left = NodePath("../MouthCapacity")
+focus_neighbor_top = NodePath("../MouthCapacity")
+focus_neighbor_right = NodePath("../Movement")
+focus_neighbor_bottom = NodePath("../Movement")
+focus_next = NodePath("../Movement")
+focus_previous = NodePath("../MouthCapacity")
 theme_override_font_sizes/font_size = 21
 text = "Vision Radius +1
 "
@@ -1522,6 +1534,12 @@ texture = ExtResource("7_pt3ps")
 [node name="Movement" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 tooltip_text = "Adds 4 more seconds to the collection timer each day."
+focus_neighbor_left = NodePath("../VisionRadius")
+focus_neighbor_top = NodePath("../VisionRadius")
+focus_neighbor_right = NodePath("../Speed")
+focus_neighbor_bottom = NodePath("../Speed")
+focus_next = NodePath("../Speed")
+focus_previous = NodePath("../VisionRadius")
 theme_override_font_sizes/font_size = 21
 text = "Daily Time +4s
 "
@@ -1546,6 +1564,12 @@ texture = ExtResource("7_pt3ps")
 [node name="Speed" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 tooltip_text = "Increases your movement speed by 0.05s per tile."
+focus_neighbor_left = NodePath("../Movement")
+focus_neighbor_top = NodePath("../Movement")
+focus_neighbor_right = NodePath("../RunHome")
+focus_neighbor_bottom = NodePath("../RunHome")
+focus_next = NodePath("../RunHome")
+focus_previous = NodePath("../Movement")
 theme_override_font_sizes/font_size = 21
 text = "Movement Speed+
 "
@@ -1570,6 +1594,12 @@ texture = ExtResource("7_pt3ps")
 [node name="RunHome" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 tooltip_text = "Gain the 'Return' ability. (Press Space to travel  straight back to your den.)"
+focus_neighbor_left = NodePath("../Speed")
+focus_neighbor_top = NodePath("../Speed")
+focus_neighbor_right = NodePath("../Jump")
+focus_neighbor_bottom = NodePath("../Jump")
+focus_next = NodePath("../Jump")
+focus_previous = NodePath("../Speed")
 theme_override_font_sizes/font_size = 21
 text = "Gain 'Return' (Space)
 "
@@ -1594,6 +1624,12 @@ texture = ExtResource("7_pt3ps")
 [node name="Jump" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 tooltip_text = "Gain the 'Jump' ability. (Move into 1x1 obstacles to jump over them.)"
+focus_neighbor_left = NodePath("../RunHome")
+focus_neighbor_top = NodePath("../RunHome")
+focus_neighbor_right = NodePath("../Hibernate")
+focus_neighbor_bottom = NodePath("../Hibernate")
+focus_next = NodePath("../Hibernate")
+focus_previous = NodePath("../RunHome")
 theme_override_font_sizes/font_size = 21
 text = "Gain 'Jump'
 "
@@ -1618,6 +1654,12 @@ texture = ExtResource("7_pt3ps")
 [node name="Hibernate" type="Button" parent="HUD_Layer/HUD/Shop/GridContainer"]
 layout_mode = 2
 tooltip_text = "Sleep for the winter, and win the game!"
+focus_neighbor_left = NodePath("../Jump")
+focus_neighbor_top = NodePath("../Jump")
+focus_neighbor_right = NodePath("../../Continue")
+focus_neighbor_bottom = NodePath("../../Continue")
+focus_next = NodePath("../../Continue")
+focus_previous = NodePath("../Jump")
 theme_override_font_sizes/font_size = 21
 text = "Hibernate
 "
@@ -1641,6 +1683,12 @@ texture = ExtResource("7_pt3ps")
 
 [node name="Continue" type="Button" parent="HUD_Layer/HUD/Shop"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../GridContainer/Hibernate")
+focus_neighbor_top = NodePath("../GridContainer/Hibernate")
+focus_neighbor_right = NodePath("../GridContainer/MouthCapacity")
+focus_neighbor_bottom = NodePath("../GridContainer/MouthCapacity")
+focus_next = NodePath("../GridContainer/MouthCapacity")
+focus_previous = NodePath("../GridContainer/Hibernate")
 theme_override_font_sizes/font_size = 21
 text = "Continue to Next Day
 "
