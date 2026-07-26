@@ -380,7 +380,8 @@ func game_over() -> void:
 	$HUD_Layer/HUD/GameOverLabel.text += str("\n\nYou ended the game \nwith ", Globals.banked_acorns, " banked acorns.")
 	await get_tree().create_timer(2).timeout
 	$HUD_Layer/HUD/Retry.show()
-	$HUD_Layer/HUD/Quit.show()
+	$HUD_Layer/HUD/Retry.grab_focus()
+	#$HUD_Layer/HUD/Quit.show()
 	
 	
 
@@ -428,7 +429,8 @@ func _on_hibernate_pressed() -> void:
 			$HUD_Layer/HUD/Perfect/AnimatedSprite2D2.play("default")
 			celebrate()
 		$HUD_Layer/HUD/Retry.show()
-		$HUD_Layer/HUD/Quit.show()
+		$HUD_Layer/HUD/Retry.grab_focus()
+		#$HUD_Layer/HUD/Quit.show()
 		
 func _on_continue_pressed() -> void:
 	setup_new_day()

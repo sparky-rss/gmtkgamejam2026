@@ -2,6 +2,7 @@ extends Node2D
 
 
 func _ready() -> void:
+	$CanvasLayer/Label/GridContainer/Start.grab_focus() 
 	if not MenuMusic.get_node("Menu").playing:
 		MenuMusic.get_node("Menu").play()
 
