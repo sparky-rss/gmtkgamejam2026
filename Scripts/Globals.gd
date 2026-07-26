@@ -74,6 +74,7 @@ const little_shrubs_to_generate: int = 100
 func setup():
 	remaining_days = days_until_winter
 	remaining_moves = total_moves
+	mouth_inventory = []
 	jump_power = false
 	JumpLevel = 0
 	run_home_power = false
