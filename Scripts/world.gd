@@ -232,6 +232,7 @@ func _on_mouth_capacity_pressed() -> void:
 		Globals.MouthCapacityLevel += 1
 		Globals.mouth_size += 1
 		get_node(str("HUD_Layer/HUD/InventoryContainer/", Globals.MouthCapacityLevel)).show()
+		get_node(str("HUD_Layer/HUD/InventoryContainer/", Globals.MouthCapacityLevel, "/AnimatedSprite2D")).hide()
 		get_node("HUD_Layer/HUD/Shop/GridContainer/MouthCapacityCost").text = str(Globals.MouthCapacityCostArray[Globals.MouthCapacityLevel])
 		button_pause_toggle(false)
 		disable_relevant_buttons()
@@ -452,6 +453,7 @@ func _on_day_timer_timeout() -> void:
 	blackout_tween = create_tween()
 	blackout_tween.tween_property($HUD_Layer/Blackout, "color:a", 1.0, 2.0)
 	await get_tree().create_timer(2.2).timeout
+	get_node("HUD_Layer/HUD/Shop/Continue").update()
 	get_node("HUD_Layer/HUD/Shop").show()
 	disable_relevant_buttons()
 	get_node("HUD_Layer/HUD/Shop/ColorRect/AnimatedSprite2D").play("idle", 1.0)

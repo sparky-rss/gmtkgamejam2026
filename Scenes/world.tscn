@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=4 uid="uid://m1m6a80qsrtw"]
+[gd_scene load_steps=141 format=4 uid="uid://m1m6a80qsrtw"]
 
 [ext_resource type="Script" uid="uid://d13omtisa0lkg" path="res://Scripts/world.gd" id="1_8j60k"]
 [ext_resource type="Texture2D" uid="uid://ffdtqelogs0w" path="res://Sprites/GRASS+.png" id="1_go701"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cfeap1dr0i28" path="res://Sprites/AcornIcon.png" id="7_pt3ps"]
 [ext_resource type="Texture2D" uid="uid://bvm01nggaov15" path="res://Sprites/Broken_tree5.png" id="7_t2t4p"]
 [ext_resource type="Texture2D" uid="uid://ddro81rc5ixa7" path="res://Sprites/Snow_christmass_tree3.png" id="8_0pcbe"]
+[ext_resource type="Script" uid="uid://bfq3cc2mfjuls" path="res://Scenes/continue.gd" id="9_04jkj"]
 [ext_resource type="Texture2D" uid="uid://chfj5gjajkf25" path="res://Sprites/Cave3.png" id="9_5v1tr"]
 [ext_resource type="Texture2D" uid="uid://dvfalur4gwr1g" path="res://Sprites/Rock1_3.png" id="9_axeuq"]
 [ext_resource type="Texture2D" uid="uid://cgbwdram16x7l" path="res://Sprites/Acorns (Silver).png" id="9_dt0r1"]
@@ -1644,6 +1645,7 @@ theme_override_font_sizes/font_size = 21
 text = "Continue to Next Day
 "
 icon_alignment = 2
+script = ExtResource("9_04jkj")
 
 [node name="Start" type="Marker2D" parent="HUD_Layer/HUD"]
 position = Vector2(1239, 286)
